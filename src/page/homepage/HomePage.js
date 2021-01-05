@@ -7,14 +7,23 @@
  *
  */
 
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import {
     View,
 } from "react-native";
 
+import NavigationBar from "../../components/NavigationBar";
+
 export default class HomePage extends PureComponent {
 
     render() {
-        return <View />;
+
+        let navigationBar = <NavigationBar>
+
+        </NavigationBar>
+
+        return (
+            <View></View>
+        );
     }
 }

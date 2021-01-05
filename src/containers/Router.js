@@ -8,10 +8,15 @@
  */
 
 import MainContainer from "./MainContainer";
+import Splash from '../page/splash/Splash'
 
 export default [
     {
-        name: "MainContainer", component: MainContainer,
-        options: { animationEnabled: false },
+        name: "Splash", component: Splash,
+        options: {headerShown: false},
+    },
+    {
+        name: "Main", component: MainContainer,
+        options: {headerShown: false, animationEnabled: false},
     },
 ];

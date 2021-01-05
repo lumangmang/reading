@@ -7,9 +7,11 @@
  *
  */
 
-import React, { PureComponent } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { BottomTabBar, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, {PureComponent} from "react";
+import {NavigationContainer} from "@react-navigation/native";
+import {BottomTabBar, createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from "react-native-vector-icons/Feather";
 
 import HomePage from "../page/homepage/HomePage";
 import MinePage from "../page/Mine/MinePage";
@@ -20,7 +22,14 @@ const TABS = {
     HomePage: {
         screen: HomePage,
         navigationOptions: {
-            tabBarLabel: "Popular",
+            tabBarLabel: "Reading",
+            tabBarIcon: ({color, _}) => {
+                return <AntDesign
+                    name={'book'}
+                    size={24}
+                    style={{color: color}}
+                />
+            }
         },
     },
 
@@ -28,6 +37,13 @@ const TABS = {
         screen: MinePage,
         navigationOptions: {
             tabBarLabel: "Mine",
+            tabBarIcon: ({color, _}) => {
+                return <Feather
+                    name={"user"}
+                    size={24}
+                    style={{color: color}}
+                />;
+            },
         },
     },
 };
@@ -35,8 +51,8 @@ const TABS = {
 class TabBarNavigators extends PureComponent {
     renderTabNavigator() {
         if (this.Tabs) return this.Tabs;
-        const { HomePage, MinePage } = TABS;
-        const tabs = { HomePage, MinePage };
+        const {HomePage, MinePage} = TABS;
+        const tabs = {HomePage, MinePage};
         return this.Tabs = <NavigationContainer
             independent={true}
         >
@@ -72,5 +88,4 @@ class TabBarComponent extends PureComponent {
         />;
     }
 }
-
 export default TabBarNavigators;

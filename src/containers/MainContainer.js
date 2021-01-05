@@ -7,15 +7,14 @@
  *
  */
 
-import React, { PureComponent } from "react";
-
+import React from "react";
 import SafeAreaViewPlus from "../components/SafeAreaViewPlus";
 import TabBarNavigators from "./TabContainer";
+import Navigator from "../utils/Navigator";
 
-export default function root (props) {
-    return (
-        <SafeAreaViewPlus>
-            <TabBarNavigators />
-        </SafeAreaViewPlus>
-    );
-}
+export default (props) => (
+    Navigator.navigation = props.navigation,
+     <SafeAreaViewPlus>
+        <TabBarNavigators />
+    </SafeAreaViewPlus>
+)
