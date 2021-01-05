@@ -8,7 +8,9 @@
  */
 
 import MainContainer from "./MainContainer";
-import Splash from '../page/splash/Splash'
+import Splash from '../page/splash/Splash';
+import Category from "../page/category/Category";
+import ReadingDetail from "../page/readpage/ReadingDetail";
 
 export default [
     {
@@ -18,5 +20,14 @@ export default [
     {
         name: "Main", component: MainContainer,
         options: {headerShown: false, animationEnabled: false},
+    },
+    {
+        name: "Category", component: Category,
+        options: {headerShown: false},
+    },
+
+    {
+        name: "ReadingDetail", component: ReadingDetail,
+        options: {headerShown: true},
     },
 ];

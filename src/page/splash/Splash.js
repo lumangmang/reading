@@ -9,6 +9,7 @@
 
 // 开屏广告页
 import SplashScreen from "react-native-splash-screen";
+import store from 'react-native-simple-store';
 
 import React, {PureComponent} from 'react';
 import {
@@ -17,7 +18,6 @@ import {
 } from 'react-native';
 
 import Navigator from "../../utils/Navigator";
-
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
 const splashImg = require('../../resource/splash.png');
@@ -26,6 +26,7 @@ export default class Splash extends PureComponent {
 
     constructor(props) {
         super(props);
+        Navigator.navigation = props.navigation;
         this.state = {
             bounceValue: new Animated.Value(1),
         }
@@ -39,8 +40,16 @@ export default class Splash extends PureComponent {
         }).start();
         SplashScreen.hide();
         this.timer = setTimeout(() => {
-            Navigator.restRoot({
-                navigation: this.props.navigation,
+            store.get('isInit').then(isInit => {
+                if (!isInit) {
+                    Navigator.goPage({
+                        isFirst: true,
+                    }, 'Category')
+                } else {
+                    Navigator.restRoot({
+                        navigation: this.props.navigation,
+                    })
+                }
             })
         }, 1000);
     }

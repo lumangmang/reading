@@ -10,11 +10,9 @@
 import React from "react";
 import SafeAreaViewPlus from "../components/SafeAreaViewPlus";
 import TabBarNavigators from "./TabContainer";
-import Navigator from "../utils/Navigator";
 
 export default (props) => (
-    Navigator.navigation = props.navigation,
-     <SafeAreaViewPlus>
+     <SafeAreaViewPlus topColor={'white'}>
         <TabBarNavigators />
     </SafeAreaViewPlus>
 )

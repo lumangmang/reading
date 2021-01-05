@@ -12,20 +12,35 @@ import {NavigationContainer} from "@react-navigation/native";
 import {BottomTabBar, createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from "react-native-vector-icons/Feather";
-
-import HomePage from "../page/homepage/HomePage";
-import MinePage from "../page/Mine/MinePage";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import ReadingPage from "../page/readpage/ReadingStack";
+import MinePage from "../page/mine/MinePage";
+import CategoryPage from "../page/category/CategoryPage";
 
 const Tab = createBottomTabNavigator();
 
 const TABS = {
-    HomePage: {
-        screen: HomePage,
+    ReadingPage: {
+        screen: ReadingPage,
         navigationOptions: {
             tabBarLabel: "Reading",
-            tabBarIcon: ({color, _}) => {
+            tabBarIcon: ({color}) => {
                 return <AntDesign
                     name={'book'}
+                    size={24}
+                    style={{color: color}}
+                />
+            }
+        },
+    },
+
+    CategoryPage: {
+        screen: CategoryPage,
+        navigationOptions: {
+            tabBarLabel: "Cate",
+            tabBarIcon: ({color}) => {
+                return <Ionicons
+                    name={'md-pricetags'}
                     size={24}
                     style={{color: color}}
                 />
@@ -37,7 +52,7 @@ const TABS = {
         screen: MinePage,
         navigationOptions: {
             tabBarLabel: "Mine",
-            tabBarIcon: ({color, _}) => {
+            tabBarIcon: ({color}) => {
                 return <Feather
                     name={"user"}
                     size={24}
@@ -51,8 +66,8 @@ const TABS = {
 class TabBarNavigators extends PureComponent {
     renderTabNavigator() {
         if (this.Tabs) return this.Tabs;
-        const {HomePage, MinePage} = TABS;
-        const tabs = {HomePage, MinePage};
+        const {ReadingPage, CategoryPage, MinePage} = TABS;
+        const tabs = {ReadingPage, CategoryPage, MinePage};
         return this.Tabs = <NavigationContainer
             independent={true}
         >
@@ -80,12 +95,13 @@ class TabBarNavigators extends PureComponent {
     }
 }
 
-class TabBarComponent extends PureComponent {
-    render() {
-        return <BottomTabBar
-            {...this.props}
-            activeTintColor={"red"}
-        />;
-    }
+const TabBarComponent = (props) => {
+    return (
+        <BottomTabBar
+            {...props}
+            activeTintColor={'#017dcc'}
+        />
+    )
 }
+
 export default TabBarNavigators;

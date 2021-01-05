@@ -7,9 +7,35 @@
  *
  */
 
+import types from "../../actions/types";
 
-const defaultState = {}
+const defaultState = {
+    isLoading: false,
+    error: '',
+    projectModels: [],
+}
 
 export default (state = defaultState, action) => {
-    return state;
+    switch (action.type) {
+        case types.REQUEST_ARTICLE_LIST:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case types.REQUEST_ARTICLE_LIST_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                projectModels: action.projectModels,
+                typeId: action.typeId,
+            }
+        case types.REQUEST_ARTICLE_LIST_FAILED:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+        default:
+            return state;
+    }
 }

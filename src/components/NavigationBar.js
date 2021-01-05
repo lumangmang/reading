@@ -36,7 +36,7 @@ export default class NavigationBar extends PureComponent {
     //设置默认属性
     static defaultProps = {
         statusBar: {
-            barStyle: "light-content",
+            barStyle: "default",
             hidden: false,
         },
     };
@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        color: "white",
         fontWeight: 'bold'
     },
     statusBar: {
