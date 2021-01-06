@@ -8,42 +8,27 @@
  */
 
 import React from "react";
-import {View} from "react-native";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
-import NavigationBar from "../../components/NavigationBar";
+import {View} from 'react-native';
 import * as readCreators from '../../actions/read';
 import ReadingList from "./ReadingList";
+import HocNavigationView from "../../components/HocNavigationView";
+import NavigationBar from "../../components/NavigationBar";
 
-const navigationBar = <NavigationBar
-    title={"Reading"}
-    style={{backgroundColor: 'white'}}
-/>
+const style = {backgroundColor: 'white'}
 
 const ReadingStack = props => (
     <View style={{flex: 1}}>
-        {navigationBar}
+        <NavigationBar
+            title={'Reading Index'}
+            style={style}
+        />
         <ReadingList {...props} />
     </View>
 )
 
-// class ReadingStack extends PureComponent {
-//
-//     render() {
-//         let navigationBar =
-//             <NavigationBar
-//                 title={"Reading"}
-//                 style={{backgroundColor: 'white'}}
-//             />;
-//         return (
-//             <View style={{flex: 1}}>
-//                 {navigationBar}
-//                 <ReadingList {...this.props} />
-//             </View>
-//         )
-//     }
-// }
+const HocNavigation = HocNavigationView(style)(ReadingStack);
 
 // ES6
 // 如果返回一个对象，需要特别注意，如果是单表达式要返回自定义对象，
@@ -59,4 +44,4 @@ const mapDispatchToProps = dispatch => {
         readActions,
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ReadingStack);
+export default connect(mapStateToProps, mapDispatchToProps)(HocNavigation);

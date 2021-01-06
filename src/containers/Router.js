@@ -28,6 +28,6 @@ export default [
 
     {
         name: "ReadingDetail", component: ReadingDetail,
-        options: {headerShown: true},
+        options: {headerShown: false},
     },
 ];

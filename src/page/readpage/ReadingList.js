@@ -18,14 +18,14 @@ import LoadingView from "../../components/LoadingView";
 
 export default class ReadingList extends PureComponent {
 
-    componentDidMount() {
-        const {readActions} = this.props;
-        readActions.requestArticleList('29', 1);
-    }
+    // componentDidMount() {
+    //     const {readActions} = this.props;
+    //     readActions.requestArticleList('29', 1);
+    // }
 
     render() {
 
-        const {read: {isLoading, projectModels, error}} = this.props;
+        // const {read: {isLoading, projectModels, error}} = this.props;
 
         // return <LoadingView />
 

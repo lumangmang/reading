@@ -7,14 +7,39 @@
  *
  */
 
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import {
     View,
 } from 'react-native';
 
-export default class ReadingDetail extends PureComponent {
+import Navigator from "../../utils/Navigator";
+import HocNavigationView from "../../components/HocNavigationView";
+import ViewHelper from "../../utils/ViewExtension";
+import NavigationBar from "../../components/NavigationBar";
+
+
+const Container = (props) => (
+    <View style={{flex: 1}}>
+        <NavigationBar
+            title={'This Page'}
+            leftButton={ViewHelper.leftBarButtonItem(() => props.onBack())}
+        />
+    </View>
+)
+
+@HocNavigationView({})
+class ReadingDetail extends PureComponent {
+    onBack() {
+        Navigator.goBack(this.props.navigation);
+    }
 
     render() {
-        return <View></View>;
+        return (
+            <Container onBack={() => this.onBack()} {...this.props} />
+        )
     }
 }
+
+export default ReadingDetail;
+
+

@@ -8,11 +8,8 @@
  */
 
 import React from "react";
-import SafeAreaViewPlus from "../components/SafeAreaViewPlus";
 import TabBarNavigators from "./TabContainer";
 
 export default (props) => (
-     <SafeAreaViewPlus topColor={'white'}>
-        <TabBarNavigators />
-    </SafeAreaViewPlus>
+    <TabBarNavigators/>
 )

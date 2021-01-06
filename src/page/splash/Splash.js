@@ -41,7 +41,7 @@ export default class Splash extends PureComponent {
         SplashScreen.hide();
         this.timer = setTimeout(() => {
             store.get('isInit').then(isInit => {
-                if (!isInit) {
+                if (isInit) {
                     Navigator.goPage({
                         isFirst: true,
                     }, 'Category')
