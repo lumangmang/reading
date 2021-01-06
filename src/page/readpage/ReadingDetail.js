@@ -7,25 +7,44 @@
  *
  */
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from "react";
 import {
     View,
-} from 'react-native';
+    Button,
+    Text,
+} from "react-native";
 
 import Navigator from "../../utils/Navigator";
 import HocNavigationView from "../../components/HocNavigationView";
 import ViewHelper from "../../utils/ViewExtension";
 import NavigationBar from "../../components/NavigationBar";
 
+import Native from "../../navite/Native";
 
 const Container = (props) => (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
         <NavigationBar
-            title={'This Page'}
+            title={"This Page"}
             leftButton={ViewHelper.leftBarButtonItem(() => props.onBack())}
         />
+
+        <Button
+            onPress={() => {
+                this.TestNativeViewRefs && this.TestNativeViewRefs.nativeFunc({ name: "111" });
+            }}
+            title="我是按钮"
+        >
+        </Button>
+
+        <Native
+            ref={ref => this.TestNativeViewRefs = ref}
+            title={"这是一个原生组件"}
+            onClick={(event) => {
+                console.warn(event.nativeEvent.msg);
+            }}
+            style={{ width: 500, height: 500 }} />
     </View>
-)
+);
 
 @HocNavigationView({})
 class ReadingDetail extends PureComponent {
@@ -36,7 +55,7 @@ class ReadingDetail extends PureComponent {
     render() {
         return (
             <Container onBack={() => this.onBack()} {...this.props} />
-        )
+        );
     }
 }
 
