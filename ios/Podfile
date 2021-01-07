@@ -21,6 +21,9 @@ target 'reading' do
   post_install do |installer|
     flipper_post_install(installer)
   end
+
+  pod 'BaiduMapKit'
+  
 end
 
 target 'reading-tvOS' do

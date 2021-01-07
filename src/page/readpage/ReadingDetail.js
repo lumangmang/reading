@@ -11,7 +11,6 @@ import React, { PureComponent } from "react";
 import {
     View,
     Button,
-    Text,
 } from "react-native";
 
 import Navigator from "../../utils/Navigator";
@@ -20,7 +19,6 @@ import ViewHelper from "../../utils/ViewExtension";
 import NavigationBar from "../../components/NavigationBar";
 
 import Native from "../../navite/Native";
-
 const Container = (props) => (
     <View style={{ flex: 1 }}>
         <NavigationBar
@@ -30,14 +28,14 @@ const Container = (props) => (
 
         <Button
             onPress={() => {
-                this.TestNativeViewRefs && this.TestNativeViewRefs.nativeFunc({ name: "111" });
+                this.native && this.native.nativeFunc({ name: "111" });
             }}
             title="我是按钮"
         >
         </Button>
 
         <Native
-            ref={ref => this.TestNativeViewRefs = ref}
+            ref={ref => this.native = ref}
             title={"这是一个原生组件"}
             onClick={(event) => {
                 console.warn(event.nativeEvent.msg);
