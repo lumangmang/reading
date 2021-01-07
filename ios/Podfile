@@ -23,6 +23,7 @@ target 'reading' do
   end
 
   pod 'BaiduMapKit'
+  pod 'BMKLocationKit'
   
 end
 
