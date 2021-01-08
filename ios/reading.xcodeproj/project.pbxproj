@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* readingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* readingTests.m */; };
-		03EB236925A604FA00CC430E /* NativeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB236825A604FA00CC430E /* NativeView.m */; };
-		03EB237025A607CD00CC430E /* NativeViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB236F25A607CD00CC430E /* NativeViewManager.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -22,6 +20,13 @@
 		78E14C8A33E09DD6F5D0D2E2 /* libPods-reading.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6876EDAD233A875A56C04CFF /* libPods-reading.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		836D103CFB42CF5FFD2462F9 /* libPods-reading-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 095C3CB87CB2CA22747C574C /* libPods-reading-tvOS.a */; };
+		89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2497625A7EF4A00349A58 /* RNTMapView.m */; };
+		89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */; };
+		89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498D25A801C200349A58 /* RNTOverlayView.m */; };
+		89F2499425A803FF00349A58 /* RNTMapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2499325A803FF00349A58 /* RNTMapViewManager.m */; };
+		89F2499B25A8069300349A58 /* RNTUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2499A25A8069300349A58 /* RNTUserLocation.m */; };
+		89F249A225A809F500349A58 /* RNTMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F249A125A809F500349A58 /* RNTMarkerView.m */; };
+		89F249A825A81B2300349A58 /* RNTInitializerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F249A725A81B2300349A58 /* RNTInitializerModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +51,6 @@
 		00E356EE1AD99517003FC87E /* readingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = readingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* readingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = readingTests.m; sourceTree = "<group>"; };
-		03EB236725A604FA00CC430E /* NativeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeView.h; sourceTree = "<group>"; };
-		03EB236825A604FA00CC430E /* NativeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeView.m; sourceTree = "<group>"; };
-		03EB236E25A607CD00CC430E /* NativeViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeViewManager.h; sourceTree = "<group>"; };
-		03EB236F25A607CD00CC430E /* NativeViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeViewManager.m; sourceTree = "<group>"; };
 		095C3CB87CB2CA22747C574C /* libPods-reading-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reading-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D9D753E4C5EE5242CC6EEDB /* Pods-reading-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-reading-tvOS/Pods-reading-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* reading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reading.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +84,18 @@
 		891E4FEA25A3FF1200764192 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		891E4FEB25A3FF1200764192 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		891E4FEC25A3FF1200764192 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		89F2497525A7EF4A00349A58 /* RNTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMapView.h; sourceTree = "<group>"; };
+		89F2497625A7EF4A00349A58 /* RNTMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapView.m; sourceTree = "<group>"; };
+		89F2498125A7FF2D00349A58 /* RNTOverlayEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTOverlayEx.h; sourceTree = "<group>"; };
+		89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTOverlayEx.m; sourceTree = "<group>"; };
+		89F2498C25A801C200349A58 /* RNTOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTOverlayView.h; sourceTree = "<group>"; };
+		89F2498D25A801C200349A58 /* RNTOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTOverlayView.m; sourceTree = "<group>"; };
+		89F2499325A803FF00349A58 /* RNTMapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapViewManager.m; sourceTree = "<group>"; };
+		89F2499925A8069300349A58 /* RNTUserLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTUserLocation.h; sourceTree = "<group>"; };
+		89F2499A25A8069300349A58 /* RNTUserLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTUserLocation.m; sourceTree = "<group>"; };
+		89F249A025A809F500349A58 /* RNTMarkerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMarkerView.h; sourceTree = "<group>"; };
+		89F249A125A809F500349A58 /* RNTMarkerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMarkerView.m; sourceTree = "<group>"; };
+		89F249A725A81B2300349A58 /* RNTInitializerModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTInitializerModule.m; sourceTree = "<group>"; };
 		AC05ACFE81BDB79450C07C15 /* Pods-reading-readingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading-readingTests.debug.xcconfig"; path = "Target Support Files/Pods-reading-readingTests/Pods-reading-readingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0941DD68A0777F7FE035F30 /* Pods-reading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading.debug.xcconfig"; path = "Target Support Files/Pods-reading/Pods-reading.debug.xcconfig"; sourceTree = "<group>"; };
 		B77FAB5EA367BF0AB003D42E /* libPods-reading-readingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reading-readingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,10 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				898AFA6425A6FF5200DF9EAB /* RNTMapkit */,
-				03EB236725A604FA00CC430E /* NativeView.h */,
-				03EB236825A604FA00CC430E /* NativeView.m */,
-				03EB236E25A607CD00CC430E /* NativeViewManager.h */,
-				03EB236F25A607CD00CC430E /* NativeViewManager.m */,
 			);
 			name = Module;
 			path = reading/Module;
@@ -260,8 +269,52 @@
 		898AFA6425A6FF5200DF9EAB /* RNTMapkit */ = {
 			isa = PBXGroup;
 			children = (
+				89F2498025A7FEF800349A58 /* Utils */,
+				89F2497425A7EF2400349A58 /* Modules */,
+				89F2497325A7EF1700349A58 /* Views */,
+				89F2496E25A7ED8700349A58 /* Location */,
 			);
 			path = RNTMapkit;
+			sourceTree = "<group>";
+		};
+		89F2496E25A7ED8700349A58 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				89F2499925A8069300349A58 /* RNTUserLocation.h */,
+				89F2499A25A8069300349A58 /* RNTUserLocation.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		89F2497325A7EF1700349A58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89F2497525A7EF4A00349A58 /* RNTMapView.h */,
+				89F2497625A7EF4A00349A58 /* RNTMapView.m */,
+				89F2499325A803FF00349A58 /* RNTMapViewManager.m */,
+				89F2498C25A801C200349A58 /* RNTOverlayView.h */,
+				89F2498D25A801C200349A58 /* RNTOverlayView.m */,
+				89F249A025A809F500349A58 /* RNTMarkerView.h */,
+				89F249A125A809F500349A58 /* RNTMarkerView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		89F2497425A7EF2400349A58 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				89F249A725A81B2300349A58 /* RNTInitializerModule.m */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		89F2498025A7FEF800349A58 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				89F2498125A7FF2D00349A58 /* RNTOverlayEx.h */,
+				89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -702,10 +755,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03EB236925A604FA00CC430E /* NativeView.m in Sources */,
+				89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				89F2499B25A8069300349A58 /* RNTUserLocation.m in Sources */,
+				89F249A225A809F500349A58 /* RNTMarkerView.m in Sources */,
+				89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				03EB237025A607CD00CC430E /* NativeViewManager.m in Sources */,
+				89F2499425A803FF00349A58 /* RNTMapViewManager.m in Sources */,
+				89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */,
+				89F249A825A81B2300349A58 /* RNTInitializerModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
