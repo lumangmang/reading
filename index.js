@@ -8,4 +8,4 @@ import { name as appName } from "./app.json";
 
 AppRegistry.registerComponent(appName, () => Root);
 
-// 6108c969aa06942c21af36eface4959b99aeed11
+// 2cf19585b039c567cc3e12f17afe0adffacf1169
