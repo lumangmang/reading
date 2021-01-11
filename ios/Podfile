@@ -24,6 +24,7 @@ target 'reading' do
 
   pod 'BaiduMapKit'
   pod 'BMKLocationKit'
+  pod 'SDCycleScrollView'
   
 end
 

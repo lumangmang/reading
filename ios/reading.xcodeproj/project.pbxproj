@@ -20,6 +20,8 @@
 		78E14C8A33E09DD6F5D0D2E2 /* libPods-reading.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6876EDAD233A875A56C04CFF /* libPods-reading.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		836D103CFB42CF5FFD2462F9 /* libPods-reading-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 095C3CB87CB2CA22747C574C /* libPods-reading-tvOS.a */; };
+		89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206825ABF7FC0074090D /* RNTScrollView.m */; };
+		89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */; };
 		89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2497625A7EF4A00349A58 /* RNTMapView.m */; };
 		89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */; };
 		89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498D25A801C200349A58 /* RNTOverlayView.m */; };
@@ -84,6 +86,9 @@
 		891E4FEA25A3FF1200764192 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		891E4FEB25A3FF1200764192 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		891E4FEC25A3FF1200764192 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		89C9206725ABF7FC0074090D /* RNTScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTScrollView.h; sourceTree = "<group>"; };
+		89C9206825ABF7FC0074090D /* RNTScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollView.m; sourceTree = "<group>"; };
+		89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollViewManager.m; sourceTree = "<group>"; };
 		89F2497525A7EF4A00349A58 /* RNTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMapView.h; sourceTree = "<group>"; };
 		89F2497625A7EF4A00349A58 /* RNTMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapView.m; sourceTree = "<group>"; };
 		89F2498125A7FF2D00349A58 /* RNTOverlayEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTOverlayEx.h; sourceTree = "<group>"; };
@@ -160,6 +165,7 @@
 		03EB235725A5EABF00CC430E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				89C9201C25ABF27E0074090D /* RNTScrollView */,
 				898AFA6425A6FF5200DF9EAB /* RNTMapkit */,
 			);
 			name = Module;
@@ -275,6 +281,16 @@
 				89F2496E25A7ED8700349A58 /* Location */,
 			);
 			path = RNTMapkit;
+			sourceTree = "<group>";
+		};
+		89C9201C25ABF27E0074090D /* RNTScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				89C9206725ABF7FC0074090D /* RNTScrollView.h */,
+				89C9206825ABF7FC0074090D /* RNTScrollView.m */,
+				89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */,
+			);
+			path = RNTScrollView;
 			sourceTree = "<group>";
 		};
 		89F2496E25A7ED8700349A58 /* Location */ = {
@@ -757,12 +773,14 @@
 			files = (
 				89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */,
 				89F2499B25A8069300349A58 /* RNTUserLocation.m in Sources */,
 				89F249A225A809F500349A58 /* RNTMarkerView.m in Sources */,
 				89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				89F2499425A803FF00349A58 /* RNTMapViewManager.m in Sources */,
 				89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */,
+				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
 				89F249A825A81B2300349A58 /* RNTInitializerModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
