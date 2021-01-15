@@ -8,6 +8,7 @@
  */
 
 import React, {PureComponent} from 'react';
+import NativeScrollerView from "../../navite/scrollerView";
 import {
     View,
     Text
@@ -29,14 +30,21 @@ export default class ReadingList extends PureComponent {
 
         // return <LoadingView />
 
-        return <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        return <View style={{flex: 1}}>
             <Text
+                style={{height: 200}}
                 onPress={() => {
-                    Navigator.goPage({}, 'ReadingDetail');
+                    // Navigator.goPage({}, 'ReadingDetail');
+                    this.scrollView.setStatus([{}, 2])
                 }}
             >
-                Detain
+                Detail
             </Text>
+            <NativeScrollerView
+                style={{height: 200}}
+                imageURLStringsGroup={[]}
+                ref={ref => this.scrollView = ref}
+            />
         </View>;
     }
 }

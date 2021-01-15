@@ -7,9 +7,11 @@
  *
  */
 
-import React, {PureComponent} from 'react';
-import {requireNativeComponent} from 'react-native';
+import React, { PureComponent } from 'react';
+import { requireNativeComponent, NativeModules, UIManager, findNodeHandle } from 'react-native';
 import PropTypes from 'prop-types';
+
+const ScrollerView = requireNativeComponent('RNTScrollView', NativeScrollerView);
 
 export default class NativeScrollerView extends PureComponent {
     static propTypes = {
@@ -23,6 +25,15 @@ export default class NativeScrollerView extends PureComponent {
         autoScrollTimeInterval: 2
     }
 
+    setStatus = (params) => {
+        console.log(params)
+        UIManager.dispatchViewManagerCommand(
+            findNodeHandle(this),
+            UIManager.getViewManagerConfig('RNTScrollView').Commands.setStatus,
+            params,
+        )
+    }
+
     render() {
         return (
             <ScrollerView {...this.props} onClick={obj => {
@@ -32,4 +43,4 @@ export default class NativeScrollerView extends PureComponent {
     }
 }
 
-const ScrollerView = requireNativeComponent('ScrollView', NativeScrollerView);
+

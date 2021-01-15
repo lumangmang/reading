@@ -20,15 +20,12 @@
 		78E14C8A33E09DD6F5D0D2E2 /* libPods-reading.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6876EDAD233A875A56C04CFF /* libPods-reading.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		836D103CFB42CF5FFD2462F9 /* libPods-reading-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 095C3CB87CB2CA22747C574C /* libPods-reading-tvOS.a */; };
+		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
+		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
+		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
+		8985DDE425B19BFE0003C530 /* RNTLocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DDE325B19BFD0003C530 /* RNTLocationModule.m */; };
 		89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206825ABF7FC0074090D /* RNTScrollView.m */; };
 		89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */; };
-		89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2497625A7EF4A00349A58 /* RNTMapView.m */; };
-		89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */; };
-		89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2498D25A801C200349A58 /* RNTOverlayView.m */; };
-		89F2499425A803FF00349A58 /* RNTMapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2499325A803FF00349A58 /* RNTMapViewManager.m */; };
-		89F2499B25A8069300349A58 /* RNTUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F2499A25A8069300349A58 /* RNTUserLocation.m */; };
-		89F249A225A809F500349A58 /* RNTMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F249A125A809F500349A58 /* RNTMarkerView.m */; };
-		89F249A825A81B2300349A58 /* RNTInitializerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F249A725A81B2300349A58 /* RNTInitializerModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,21 +83,14 @@
 		891E4FEA25A3FF1200764192 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		891E4FEB25A3FF1200764192 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		891E4FEC25A3FF1200764192 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		8985DD4D25B142CC0003C530 /* RNTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableView.swift; sourceTree = "<group>"; };
+		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
+		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
+		8985DD6025B174F30003C530 /* reading-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "reading-Bridging-Header.h"; path = "reading/reading-Bridging-Header.h"; sourceTree = "<group>"; };
+		8985DDE325B19BFD0003C530 /* RNTLocationModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTLocationModule.m; sourceTree = "<group>"; };
 		89C9206725ABF7FC0074090D /* RNTScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTScrollView.h; sourceTree = "<group>"; };
 		89C9206825ABF7FC0074090D /* RNTScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollView.m; sourceTree = "<group>"; };
 		89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollViewManager.m; sourceTree = "<group>"; };
-		89F2497525A7EF4A00349A58 /* RNTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMapView.h; sourceTree = "<group>"; };
-		89F2497625A7EF4A00349A58 /* RNTMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapView.m; sourceTree = "<group>"; };
-		89F2498125A7FF2D00349A58 /* RNTOverlayEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTOverlayEx.h; sourceTree = "<group>"; };
-		89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTOverlayEx.m; sourceTree = "<group>"; };
-		89F2498C25A801C200349A58 /* RNTOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTOverlayView.h; sourceTree = "<group>"; };
-		89F2498D25A801C200349A58 /* RNTOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTOverlayView.m; sourceTree = "<group>"; };
-		89F2499325A803FF00349A58 /* RNTMapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapViewManager.m; sourceTree = "<group>"; };
-		89F2499925A8069300349A58 /* RNTUserLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTUserLocation.h; sourceTree = "<group>"; };
-		89F2499A25A8069300349A58 /* RNTUserLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTUserLocation.m; sourceTree = "<group>"; };
-		89F249A025A809F500349A58 /* RNTMarkerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMarkerView.h; sourceTree = "<group>"; };
-		89F249A125A809F500349A58 /* RNTMarkerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMarkerView.m; sourceTree = "<group>"; };
-		89F249A725A81B2300349A58 /* RNTInitializerModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTInitializerModule.m; sourceTree = "<group>"; };
 		AC05ACFE81BDB79450C07C15 /* Pods-reading-readingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading-readingTests.debug.xcconfig"; path = "Target Support Files/Pods-reading-readingTests/Pods-reading-readingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0941DD68A0777F7FE035F30 /* Pods-reading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading.debug.xcconfig"; path = "Target Support Files/Pods-reading/Pods-reading.debug.xcconfig"; sourceTree = "<group>"; };
 		B77FAB5EA367BF0AB003D42E /* libPods-reading-readingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reading-readingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +155,7 @@
 		03EB235725A5EABF00CC430E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				8985DD4B25B142150003C530 /* RNTTableView */,
 				89C9201C25ABF27E0074090D /* RNTScrollView */,
 				898AFA6425A6FF5200DF9EAB /* RNTMapkit */,
 			);
@@ -183,6 +174,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				8985DD6025B174F30003C530 /* reading-Bridging-Header.h */,
 			);
 			name = reading;
 			sourceTree = "<group>";
@@ -272,12 +264,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		8985DD4B25B142150003C530 /* RNTTableView */ = {
+			isa = PBXGroup;
+			children = (
+				8985DD4D25B142CC0003C530 /* RNTTableView.swift */,
+				8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */,
+				8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */,
+			);
+			path = RNTTableView;
+			sourceTree = "<group>";
+		};
 		898AFA6425A6FF5200DF9EAB /* RNTMapkit */ = {
 			isa = PBXGroup;
 			children = (
-				89F2498025A7FEF800349A58 /* Utils */,
-				89F2497425A7EF2400349A58 /* Modules */,
-				89F2497325A7EF1700349A58 /* Views */,
 				89F2496E25A7ED8700349A58 /* Location */,
 			);
 			path = RNTMapkit;
@@ -296,41 +295,9 @@
 		89F2496E25A7ED8700349A58 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				89F2499925A8069300349A58 /* RNTUserLocation.h */,
-				89F2499A25A8069300349A58 /* RNTUserLocation.m */,
+				8985DDE325B19BFD0003C530 /* RNTLocationModule.m */,
 			);
 			path = Location;
-			sourceTree = "<group>";
-		};
-		89F2497325A7EF1700349A58 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				89F2497525A7EF4A00349A58 /* RNTMapView.h */,
-				89F2497625A7EF4A00349A58 /* RNTMapView.m */,
-				89F2499325A803FF00349A58 /* RNTMapViewManager.m */,
-				89F2498C25A801C200349A58 /* RNTOverlayView.h */,
-				89F2498D25A801C200349A58 /* RNTOverlayView.m */,
-				89F249A025A809F500349A58 /* RNTMarkerView.h */,
-				89F249A125A809F500349A58 /* RNTMarkerView.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		89F2497425A7EF2400349A58 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				89F249A725A81B2300349A58 /* RNTInitializerModule.m */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		89F2498025A7FEF800349A58 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				89F2498125A7FF2D00349A58 /* RNTOverlayEx.h */,
-				89F2498225A7FF2D00349A58 /* RNTOverlayEx.m */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,7 +396,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1200;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -533,7 +500,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-reading-readingTests/Pods-reading-readingTests-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -554,7 +520,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -629,7 +594,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-reading/Pods-reading-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -650,7 +614,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -771,17 +734,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89F2498325A7FF2D00349A58 /* RNTOverlayEx.m in Sources */,
+				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
+				8985DDE425B19BFE0003C530 /* RNTLocationModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */,
-				89F2499B25A8069300349A58 /* RNTUserLocation.m in Sources */,
-				89F249A225A809F500349A58 /* RNTMarkerView.m in Sources */,
-				89F2498E25A801C200349A58 /* RNTOverlayView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				89F2499425A803FF00349A58 /* RNTMapViewManager.m in Sources */,
-				89F2497725A7EF4A00349A58 /* RNTMapView.m in Sources */,
+				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
 				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
-				89F249A825A81B2300349A58 /* RNTInitializerModule.m in Sources */,
+				8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +782,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC05ACFE81BDB79450C07C15 /* Pods-reading-readingTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -845,6 +806,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84C2D4A5AE712CCC376E5734 /* Pods-reading-readingTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = readingTests/Info.plist;
@@ -879,6 +841,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = reading;
+				SWIFT_OBJC_BRIDGING_HEADER = "reading/reading-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -902,6 +865,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = reading;
+				SWIFT_OBJC_BRIDGING_HEADER = "reading/reading-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
