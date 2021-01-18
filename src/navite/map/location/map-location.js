@@ -9,7 +9,7 @@
 
 export default class Geolocation {
 
-    static fetchCurrentLocation(
-        success
-    )
+    // static fetchCurrentLocation(
+    //
+    // )
 }
