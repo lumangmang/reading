@@ -12,12 +12,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import routers from "./Router";
 
+// import { Location } from '../navite/map'
+
 const Stack = createStackNavigator();
-// Initializer.init("NNzd3TcBpigM4V9zmCUGWuq9yPWEQBKm").then(result => {
-//     console.log(result);
+
+// Location.init("NNzd3TcBpigM4V9zmCUGWuq9yPWEQBKm")
+//
+//
+//
+// Location.fetchCurrentLocation('bd09ll').then(value => {
+//     console.log('-------------', value)
 // }).catch(error => {
-//     console.log(error);
-// });
+//     console.log('+++++++++++++', error)
+// })
 
 export default function App() {
     return (

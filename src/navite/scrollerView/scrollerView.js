@@ -25,8 +25,11 @@ export default class NativeScrollerView extends PureComponent {
         autoScrollTimeInterval: 2
     }
 
+    /**
+     * 调用Native方法传值
+     * @param params 接受一个数组
+     */
     setStatus = (params) => {
-        console.log(params)
         UIManager.dispatchViewManagerCommand(
             findNodeHandle(this),
             UIManager.getViewManagerConfig('RNTScrollView').Commands.setStatus,

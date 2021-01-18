@@ -20,6 +20,10 @@
 		78E14C8A33E09DD6F5D0D2E2 /* libPods-reading.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6876EDAD233A875A56C04CFF /* libPods-reading.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		836D103CFB42CF5FFD2462F9 /* libPods-reading-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 095C3CB87CB2CA22747C574C /* libPods-reading-tvOS.a */; };
+		895BC03425B523B800E015CC /* RNTPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895BC03325B523B800E015CC /* RNTPageView.swift */; };
+		895BC03A25B5240900E015CC /* RNTPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895BC03925B5240900E015CC /* RNTPageViewManager.swift */; };
+		895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 895BC03F25B5242100E015CC /* RNTPageViewBridge.m */; };
+		895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 895BC04525B54E8B00E015CC /* RNTLocationManager.m */; };
 		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
 		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
 		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
@@ -83,6 +87,10 @@
 		891E4FEA25A3FF1200764192 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		891E4FEB25A3FF1200764192 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		891E4FEC25A3FF1200764192 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		895BC03325B523B800E015CC /* RNTPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTPageView.swift; sourceTree = "<group>"; };
+		895BC03925B5240900E015CC /* RNTPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTPageViewManager.swift; sourceTree = "<group>"; };
+		895BC03F25B5242100E015CC /* RNTPageViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPageViewBridge.m; sourceTree = "<group>"; };
+		895BC04525B54E8B00E015CC /* RNTLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTLocationManager.m; sourceTree = "<group>"; };
 		8985DD4D25B142CC0003C530 /* RNTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableView.swift; sourceTree = "<group>"; };
 		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
 		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 		03EB235725A5EABF00CC430E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				895BC03225B5230600E015CC /* RNTPageView */,
 				8985DD4B25B142150003C530 /* RNTTableView */,
 				89C9201C25ABF27E0074090D /* RNTScrollView */,
 				898AFA6425A6FF5200DF9EAB /* RNTMapkit */,
@@ -264,6 +273,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		895BC03225B5230600E015CC /* RNTPageView */ = {
+			isa = PBXGroup;
+			children = (
+				895BC03325B523B800E015CC /* RNTPageView.swift */,
+				895BC03F25B5242100E015CC /* RNTPageViewBridge.m */,
+				895BC03925B5240900E015CC /* RNTPageViewManager.swift */,
+			);
+			path = RNTPageView;
+			sourceTree = "<group>";
+		};
 		8985DD4B25B142150003C530 /* RNTTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				8985DDE325B19BFD0003C530 /* RNTLocationModule.m */,
+				895BC04525B54E8B00E015CC /* RNTLocationManager.m */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -734,11 +754,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				895BC03A25B5240900E015CC /* RNTPageViewManager.swift in Sources */,
 				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
 				8985DDE425B19BFE0003C530 /* RNTLocationModule.m in Sources */,
+				895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */,
+				895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				895BC03425B523B800E015CC /* RNTPageView.swift in Sources */,
 				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
 				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
 				8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */,

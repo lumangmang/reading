@@ -4,3 +4,4 @@
 
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
+#import <SDCycleScrollView/SDCycleScrollView.h>

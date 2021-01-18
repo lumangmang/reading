@@ -8,7 +8,7 @@
 #import <React/RCTEventEmitter.h>
 #import <BMKLocationKit/BMKLocationComponent.h>
 
-@interface RNTLocationModule : RCTEventEmitter<RCTBridgeModule, BMKLocationManagerDelegate, BMKLocationAuthDelegate>
+@interface RNTLocationModule : NSObject<RCTBridgeModule, BMKLocationManagerDelegate, BMKLocationAuthDelegate>
 
 @end
 
@@ -21,19 +21,25 @@
   RCTPromiseRejectBlock _reject;
 }
 
+RCT_EXPORT_MODULE(Initializer)
+
 RCT_REMAP_METHOD(init, key:(NSString *)key resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject) {
   
   _resolve = resolve;
   _reject = reject;
-  [[BMKLocationAuth sharedInstance] checkPermisionWithKey:@"" authDelegate:self];
+  [[BMKLocationAuth sharedInstance] checkPermisionWithKey:key authDelegate:self];
 }
 
 - (void)onCheckPermissionState:(BMKLocationAuthErrorCode)iError {
   if (iError) {
     _reject([NSString stringWithFormat:@"%ld", iError], @"", nil);
   } else {
-    _resolve(nil);
+    _resolve(@"SUCCESS");
   }
+}
+
+- (void)BMKLocationManager:(BMKLocationManager *)manager didUpdateLocation:(BMKLocation *)location orError:(NSError *)error {
+  
 }
 
 @end
