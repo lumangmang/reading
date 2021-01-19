@@ -7,8 +7,8 @@
  *
  */
 
-import Location from './location/location';
+import Geolocation from "./location/location";
 
 export {
-    Location,
+    Geolocation,
 }

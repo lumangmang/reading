@@ -5,8 +5,11 @@
 //  Created by Devin on 2021/1/18.
 //
 
-#import <BMKLocationkit/BMKLocationComponent.h>
 #import <React/RCTEventEmitter.h>
+#import <BMKLocationkit/BMKLocationComponent.h>
+
+NSString *const CURRENTLOCATIONEVENT = @"CURRENTLOCATIONEVENT";
+NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
 
 @interface RNTLocationManager : RCTEventEmitter <RCTBridgeModule, BMKLocationManagerDelegate> {
   BMKLocationManager *_manager;
@@ -38,13 +41,42 @@
     self.hasListeners = NO;
 }
 - (NSArray<NSString *> *)supportedEvents {
-  return @[@"currentLocation", @"onLocationUpdate"];
+  return @[CURRENTLOCATIONEVENT, ONLOCATIONUPDATE];
 }
 
 - (void)sendEvent:(NSString *)name body:(id)body {
   if (!self.hasListeners) return;
   [self sendEventWithName:name body:body];
 }
+
+- (id)json:(BMKLocation *)location error:(NSError *)error {
+  if (!error) {
+    return @{
+      @"accuracy" : @(location.location.horizontalAccuracy),
+      @"latitude" : @(location.location.coordinate.latitude),
+      @"longitude" : @(location.location.coordinate.longitude),
+      @"altitude" : @(location.location.altitude),
+      @"speed" : @(location.location.speed),
+      @"heading" : @(location.location.course),
+      @"address" : location.rgcData.locationDescribe ? location.rgcData.locationDescribe
+                                              : @"",
+      @"country" : location.rgcData.country ? location.rgcData.country : @"",
+      @"province" : location.rgcData.province ? location.rgcData.province : @"",
+      @"city" : location.rgcData.city ? location.rgcData.city : @"",
+      @"cityCode" : location.rgcData.cityCode ? location.rgcData.cityCode : @"",
+      @"district" : location.rgcData.district ? location.rgcData.district : @"",
+      @"street" : location.rgcData.street ? location.rgcData.street : @"",
+      @"streetNumber" : location.rgcData.streetNumber ? location.rgcData.streetNumber : @"",
+      @"adCode" : location.rgcData.adCode ? location.rgcData.adCode : @"",
+    };
+  } else {
+    return @{
+      @"errorCode" : @(error.code),
+      @"errorMessage": error.localizedDescription,
+    };
+  }
+}
+
 
 RCT_EXPORT_MODULE(LocationManager)
 
@@ -60,29 +92,33 @@ RCT_REMAP_METHOD(init, initWithKey
         self->_manager = [[BMKLocationManager alloc] init];
         self->_manager.delegate = self;
       }
-      resolve(nil);
+      resolve(@"Map Init Success");
     });
   } else {
-    resolve(nil);
+    resolve(@"Map has been init");
   }
 }
 
-RCT_EXPORT_METHOD(currentLocation:(NSString *)location) {
+RCT_EXPORT_METHOD(currentLocation) {
   if (self.onLocation) return;
   self.onLocation = YES;
   dispatch_async(dispatch_get_main_queue(), ^{
     [self->_manager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
       self.onLocation = NO;
-      [self sendEvent:@"currentLocation" body:@{@"value": @"2"}];
+      id body = [self json:location error:error];
+      [self sendEvent:CURRENTLOCATIONEVENT body:body];
     }];
   });
 }
                  
 RCT_EXPORT_METHOD(start) {
+  if (self.onLocation) return;
+  self.onLocation = YES;
   [_manager startUpdatingLocation];
 }
 
 RCT_EXPORT_METHOD(stop) {
+  self.onLocation = NO;
   [_manager stopUpdatingLocation];
 }
 
@@ -114,6 +150,15 @@ RCT_EXPORT_METHOD(setLocationTimeout:(int)value) {
   _manager.locationTimeout = value;
 }
 
+// MARK: - BMKLocationManagerDelegate
+- (void)BMKLocationManager:(BMKLocationManager *)manager didUpdateLocation:(BMKLocation *)location orError:(NSError *)error {
+  id json = [self json:location error:error];
+  [self sendEvent:ONLOCATIONUPDATE body:json];
+}
+- (void)BMKLocationManager:(BMKLocationManager *)manager didFailWithError:(NSError *)error {
+  id json = [self json:nil error:error];
+  [self sendEvent:ONLOCATIONUPDATE body:json];
+}
 @end
 
 

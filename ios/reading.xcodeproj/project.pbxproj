@@ -27,7 +27,6 @@
 		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
 		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
 		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
-		8985DDE425B19BFE0003C530 /* RNTLocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DDE325B19BFD0003C530 /* RNTLocationModule.m */; };
 		89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206825ABF7FC0074090D /* RNTScrollView.m */; };
 		89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */; };
 /* End PBXBuildFile section */
@@ -95,7 +94,6 @@
 		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
 		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
 		8985DD6025B174F30003C530 /* reading-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "reading-Bridging-Header.h"; path = "reading/reading-Bridging-Header.h"; sourceTree = "<group>"; };
-		8985DDE325B19BFD0003C530 /* RNTLocationModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTLocationModule.m; sourceTree = "<group>"; };
 		89C9206725ABF7FC0074090D /* RNTScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTScrollView.h; sourceTree = "<group>"; };
 		89C9206825ABF7FC0074090D /* RNTScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollView.m; sourceTree = "<group>"; };
 		89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollViewManager.m; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 		89F2496E25A7ED8700349A58 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				8985DDE325B19BFD0003C530 /* RNTLocationModule.m */,
 				895BC04525B54E8B00E015CC /* RNTLocationManager.m */,
 			);
 			path = Location;
@@ -756,7 +753,6 @@
 			files = (
 				895BC03A25B5240900E015CC /* RNTPageViewManager.swift in Sources */,
 				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
-				8985DDE425B19BFE0003C530 /* RNTLocationModule.m in Sources */,
 				895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */,
 				895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
