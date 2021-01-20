@@ -8,8 +8,8 @@
 #import <React/RCTEventEmitter.h>
 #import <BMKLocationkit/BMKLocationComponent.h>
 
-NSString *const CURRENTLOCATIONEVENT = @"CURRENTLOCATIONEVENT";
-NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
+static NSString *const CURRENTLOCATIONEVENT = @"CURRENTLOCATIONEVENT";
+static NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
 
 @interface RNTLocationManager : RCTEventEmitter <RCTBridgeModule, BMKLocationManagerDelegate> {
   BMKLocationManager *_manager;
