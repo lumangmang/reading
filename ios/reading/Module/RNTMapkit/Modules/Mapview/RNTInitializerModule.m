@@ -6,7 +6,6 @@
 //
 
 #import <React/RCTBridgeModule.h>
-#import <BMKLocationkit/BMKLocationComponent.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 
 @interface RNTInitializerModule: NSObject<RCTBridgeModule, BMKGeneralDelegate>

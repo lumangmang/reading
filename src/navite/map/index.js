@@ -8,9 +8,10 @@
  */
 
 import Geolocation from "./location/location"
+import LocationManager from './location/map-location'
+
 import MapInitializer from './modules/initializer'
 import Mapview from "./views"
-import LocationManager from './location/map-location'
 
 export default {
     // 定位相关

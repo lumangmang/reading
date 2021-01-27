@@ -10,40 +10,39 @@
 import React, { PureComponent } from 'react';
 import {
     View,
-    Text
+    Text,
+    StyleSheet
 } from 'react-native';
 
 import { Mapview, Geolocation, LocationManager } from '../../navite/map'
 
 export default class ReadingList extends PureComponent {
 
-    state = {}
-
     componentDidMount() {
+        // 单次定位
+        // Geolocation.fetchCurrentLocation(position => {
+        // }, error => {
+        // })
 
+        // 连续定位
+        this.listener = Geolocation.watchPosition(position => {
+            console.log(position)
+        }, error => {
+            console.log(error)
+        })
+        Geolocation.start()
+    }
+
+    componentWillUnmount() {
+        // 移除连续定位
+        Geolocation.stop()
+        Geolocation.clearWatch(this.listener)
     }
 
     render() {
         return <View style={{flex: 1}}>
-            <Mapview
-                style={{flex: 1}}
-                // minZoomLevel={5}
-                // maxZoomLevel={20}
-                // satellite
-                zoomLevel={14}
-                // compassDisabled={false}
-                // trafficEnabled={true}
-                // scaleBarDisabled={false}
-                // buildingsDisabled={false}
-                // scrollDisabled={true}
-                // center={{
-                //     longitude: 117.12,
-                //     latitude: 32.57,
-                // }}
-                // location={location.location}
-                // locationEnabled
-                // locationMode={"follow"}
-            />
+            <Mapview style={StyleSheet.absoluteFill}>
+            </Mapview>
         </View>;
     }
 }

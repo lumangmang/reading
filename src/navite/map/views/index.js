@@ -7,7 +7,6 @@
  *
  */
 
-import Mapview from "./mapview";
-
+import Mapview from "./mapview"
 
 export default Mapview
