@@ -16,7 +16,7 @@ const NAV_BAR_HEIGHT_ANDROID = 50;//导航栏在Android中的高度
 const NAV_BAR_HEIGHT = Platform.OS === "ios" ? NAV_BAR_HEIGHT_IOS : NAV_BAR_HEIGHT_ANDROID;
 const STATUS_BAR_HEIGHT = (Platform.OS !== "ios" || DeviceInfo.isIPhoneX_deprecated) ? 0 : 20;//状态栏的高度
 const StatusBarShape = {//设置状态栏所接受的属性
-    barStyle: PropTypes.oneOf(["light-content", "default"]),
+    barStyle: PropTypes.oneOf(["light-content", "default", "dark-content"]),
     hidden: PropTypes.bool,
     backgroundColor: PropTypes.string,
 };
@@ -37,7 +37,7 @@ export default class NavigationBar extends PureComponent {
     //设置默认属性
     static defaultProps = {
         statusBar: {
-            barStyle: "default",
+            barStyle: "dark-content",
             hidden: false,
         },
     };

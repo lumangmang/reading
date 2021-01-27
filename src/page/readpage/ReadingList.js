@@ -8,61 +8,53 @@
  */
 
 import React, { PureComponent } from 'react';
-import NativeScrollerView from "../../navite/scrollerView";
-import NativePageView from "../../navite/pageView";
 import {
     View,
     Text
 } from 'react-native';
 
-import Navigator from "../../utils/Navigator";
-import LoadingView from "../../components/LoadingView";
+import { Mapview, Geolocation } from '../../navite/map'
 
 export default class ReadingList extends PureComponent {
 
+    state = {}
+
     // componentDidMount() {
-    //     const {readActions} = this.props;
-    //     readActions.requestArticleList('29', 1);
+    //     this.listener = Geolocation.watchPosition(location => {
+    //         console.log(location)
+    //         this.setState({
+    //             location,
+    //         })
+    //     }, error => {
+    //         console.log(error)
+    //     })
+    //     Geolocation.start()
+    // }
+    //
+    // componentWillUnmount() {
+    //     Geolocation.stop()
+    //     Geolocation.clearWatch(this.listener)
     // }
 
     render() {
-
-        // const {read: {isLoading, projectModels, error}} = this.props;
-
-        // return <LoadingView />
-
         return <View style={{flex: 1}}>
-            <Text
-                style={{height: 200}}
-                onPress={() => {
-                    // Navigator.goPage({}, 'ReadingDetail');
-                    this.scrollView.setStatus([{}, 2])
-                }}
-            >
-                Detail
-            </Text>
-            <NativeScrollerView
-                style={{height: 200, backgroundColor: 'red'}}
-                imageURLStringsGroup={[
-                    'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3468842248,1928586949&fm=26&gp=0.jpg',
-                    'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1136631939,606206356&fm=26&gp=0.jpg',
-                    'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1980625098,3267059552&fm=26&gp=0.jpg'
-                ]}
-                onSelectImageIndex={(index) => {
-                    alert(index)
-                }}
-                ref={ref => this.scrollView = ref}
-            />
-            <NativePageView
-                style={{height: 200, backgroundColor: 'red'}}
-                imageURLStringsGroup={[
-                    'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3468842248,1928586949&fm=26&gp=0.jpg',
-                    'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1136631939,606206356&fm=26&gp=0.jpg',
-                    'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1980625098,3267059552&fm=26&gp=0.jpg'
-                ]}
-                onSelectImageIndex={(event) => {
-                    alert(event.nativeEvent.index)
-                }}
+            <Mapview
+                style={{flex: 1}}
+                minZoomLevel={5}
+                maxZoomLevel={20}
+                zoomLevel={15}
+                // compassDisabled={false}
+                // trafficEnabled={true}
+                // scaleBarDisabled={false}
+                // buildingsDisabled={false}
+                // scrollDisabled={true}
+                // center={{
+                //     longitude: 117.12,
+                //     latitude: 32.57,
+                // }}
+                // location={location.location}
+                // locationEnabled
+                // locationMode={"follow"}
             />
         </View>;
     }

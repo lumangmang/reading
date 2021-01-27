@@ -8,8 +8,8 @@
 #import <React/RCTEventEmitter.h>
 #import <BMKLocationkit/BMKLocationComponent.h>
 
-static NSString *const CURRENTLOCATIONEVENT = @"CURRENTLOCATIONEVENT";
-static NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
+static NSString *const ONCURRENTLOCATION      =   @"ON_CURRENT_LOCATION";
+static NSString *const ONLOCATIONUPDATE       =   @"ON_LOCATION_UPDATE";
 
 @interface RNTLocationManager : RCTEventEmitter <RCTBridgeModule, BMKLocationManagerDelegate> {
   BMKLocationManager *_manager;
@@ -41,7 +41,7 @@ static NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
     self.hasListeners = NO;
 }
 - (NSArray<NSString *> *)supportedEvents {
-  return @[CURRENTLOCATIONEVENT, ONLOCATIONUPDATE];
+  return @[ONCURRENTLOCATION, ONLOCATIONUPDATE];
 }
 
 - (void)sendEvent:(NSString *)name body:(id)body {
@@ -52,12 +52,8 @@ static NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
 - (id)json:(BMKLocation *)location error:(NSError *)error {
   if (!error) {
     return @{
-      @"accuracy" : @(location.location.horizontalAccuracy),
       @"latitude" : @(location.location.coordinate.latitude),
       @"longitude" : @(location.location.coordinate.longitude),
-      @"altitude" : @(location.location.altitude),
-      @"speed" : @(location.location.speed),
-      @"heading" : @(location.location.course),
       @"address" : location.rgcData.locationDescribe ? location.rgcData.locationDescribe
                                               : @"",
       @"country" : location.rgcData.country ? location.rgcData.country : @"",
@@ -69,12 +65,13 @@ static NSString *const ONLOCATIONUPDATE = @"ONLOCATIONUPDATE";
       @"streetNumber" : location.rgcData.streetNumber ? location.rgcData.streetNumber : @"",
       @"adCode" : location.rgcData.adCode ? location.rgcData.adCode : @"",
     };
-  } else {
-    return @{
+  }
+  return @{
       @"errorCode" : @(error.code),
       @"errorMessage": error.localizedDescription,
+      @"latitude" : @(location.location.coordinate.latitude),
+      @"longitude" : @(location.location.coordinate.longitude),
     };
-  }
 }
 
 
@@ -92,10 +89,10 @@ RCT_REMAP_METHOD(init, initWithKey
         self->_manager = [[BMKLocationManager alloc] init];
         self->_manager.delegate = self;
       }
-      resolve(@"Map Init Success");
+      resolve(@"Location Init Success");
     });
   } else {
-    resolve(@"Map has been init");
+    resolve(@"Location has been init");
   }
 }
 
@@ -106,7 +103,7 @@ RCT_EXPORT_METHOD(currentLocation) {
     [self->_manager requestLocationWithReGeocode:YES withNetworkState:YES completionBlock:^(BMKLocation * _Nullable location, BMKLocationNetworkState state, NSError * _Nullable error) {
       self.onLocation = NO;
       id body = [self json:location error:error];
-      [self sendEvent:CURRENTLOCATIONEVENT body:body];
+      [self sendEvent:ONCURRENTLOCATION body:body];
     }];
   });
 }

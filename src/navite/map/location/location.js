@@ -8,22 +8,26 @@
  */
 
 import { EmitterSubscription } from 'react-native'
-import { Location, Position, EventTypes } from "../types";
-import { LocationError } from "./location-error";
+import { EventTypes } from "../types"
 import MapLocation from './map-location'
+import type { Location, ReGeocode } from "../types"
 
-let watchId = 0;
-const watchMap: { [watchId: number]: EmitterSubscription } = {};
+let watchId = 0
+const watchMap: { [watchId: number]: EmitterSubscription } = {}
+
+class LocationError {
+    code: number
+    message: string
+    location: Location
+
+    constructor(code: number, message: string, location: Location) {
+        this.code = code
+        this.message = message
+        this.location = location
+    }
+}
 
 export default class Geolocation {
-    /**
-     * 初始化定位SDK,必须最先调用
-     * @param key api key
-     * @returns {Promise<void>|*}
-     */
-    static init(key: string): Promise<void> {
-        return MapLocation.init(key)
-    }
 
     /**
      * 单次定位
@@ -31,7 +35,7 @@ export default class Geolocation {
      * @param error 定位失败回调错误信息
      */
     static fetchCurrentLocation(
-        success: (position: Position) => void,
+        success: (position: (Location & ReGeocode)) => void,
         error?: (error: LocationError) => void,
     ) {
         MapLocation.currentLocation()
@@ -41,7 +45,7 @@ export default class Geolocation {
                     error && error(new LocationError(location.errorCode, location.errorMessage, location))
                     return listener.remove()
                 }
-                success(formatLocation(location))
+                success(location)
                 return listener.remove()
             })
     }
@@ -53,7 +57,7 @@ export default class Geolocation {
      * @returns {number}
      */
     static watchPosition(
-        success: (position: Position) => void,
+        success: (position: (Location & ReGeocode)) => void,
         error?: (error: LocationError) => void,
     ) {
         watchMap[++watchId] = MapLocation.addLocationListener(EventTypes.onLocationUpdate,
@@ -61,10 +65,9 @@ export default class Geolocation {
                 if (location.errorCode) {
                     error && error(new LocationError(location.errorCode, location.errorMessage, location));
                 } else {
-                    success(formatLocation(location))
+                    success(location)
                 }
             })
-        MapLocation.start()
         return watchId
     }
 
@@ -86,22 +89,14 @@ export default class Geolocation {
     static stop() {
         MapLocation.stop()
     }
-}
 
-/**
- * 格式化位置信息
- * @param location
- */
-function formatLocation(location: Location) {
-    return {
-        location,
-        coords: {
-            latitude: location.latitude,
-            longitude: location.longitude,
-            altitude: location.altitude,
-            accuracy: location.accuracy,
-            heading: location.heading,
-            speed: location.speed,
-        },
+    /**
+     * 开始连续定位
+     */
+    static start() {
+        MapLocation.start()
     }
 }
+
+
+

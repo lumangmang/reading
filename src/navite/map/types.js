@@ -7,18 +7,16 @@
  *
  */
 
+export type AppKey = {
+    ios: string,
+    android: string,
+}
+
 export type Location = {
-    accuracy: number,
     latitude: number,
     longitude: number,
-    altitude?: number,
-    speed?: number,
-    heading?: number,
     errorCode?: number,
     errorMessage?: string,
-    locationDetail?: string,
-    coordinateType?: "WGS84" | "GCJ02";
-    direction: number,
 }
 
 export type ReGeocode = {
@@ -30,27 +28,13 @@ export type ReGeocode = {
     district?: string;
     street?: string;
     streetNumber?: string;
-    poiName?: string;
+    adCode?: string,
 }
 
-export type Coordinates = {
-    latitude: number;
-    longitude: number;
-    altitude: number;
-    accuracy: number;
-    altitudeAccuracy: number;
-    heading: number;
-    speed: number;
-}
-
-export type Position = {
-    coords: Coordinates;
-    location: Location;
-}
 
 // 事件类型
 export const EventTypes = {
     // 单次定位
-    currentLocation: 'CURRENTLOCATIONEVENT',
-    onLocationUpdate: 'ONLOCATIONUPDATE',
+    currentLocation: 'ON_CURRENT_LOCATION',
+    onLocationUpdate: 'ON_LOCATION_UPDATE',
 }
