@@ -10,8 +10,8 @@
 import { NativeModules, NativeEventEmitter, Platform } from "react-native"
 import { Location, ReGeocode, AppKey } from "../types"
 
-const {LocationManager} = NativeModules;
-const eventEmitter = new NativeEventEmitter(LocationManager);
+const {LocationManager} = NativeModules
+const eventEmitter = new NativeEventEmitter(LocationManager)
 
 /**
  * 初始化SDK
@@ -31,6 +31,7 @@ const init = (key: AppKey): Promise<void> => LocationManager.init(Platform.selec
 const addLocationListener = (type: string, listener: (location: Location & ReGeocode) => void) =>
     eventEmitter.addListener(type, listener)
 
+
 /**
  * 开始连续定位
  */
@@ -40,6 +41,12 @@ const start = () => LocationManager.start()
  * 停止连续定位
  */
 const stop = () => LocationManager.stop()
+
+/**
+ * 单次定位
+ * @returns {*}
+ */
+const currentLocation = () => LocationManager.currentLocation()
 
 /**
  * 设定定位的最小更新距离（米）
@@ -123,11 +130,11 @@ const setLocatingWithReGeocode = (isReGeocode: boolean) => {
     }
 }
 
-
 export default {
     init,
     start,
     stop,
+    currentLocation,
     addLocationListener,
     setDistanceFilter,
     setLocatingWithReGeocode,

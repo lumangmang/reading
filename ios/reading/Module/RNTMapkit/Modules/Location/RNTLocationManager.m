@@ -54,6 +54,11 @@ static NSString *const ONLOCATIONUPDATE       =   @"ON_LOCATION_UPDATE";
     return @{
       @"latitude" : @(location.location.coordinate.latitude),
       @"longitude" : @(location.location.coordinate.longitude),
+      @"accuracy" : @(location.location.horizontalAccuracy),
+      @"altitude" : @(location.location.altitude),
+      @"speed" : @(location.location.speed),
+      @"heading" : @(location.location.course),
+      @"timestamp" : @(location.location.timestamp.timeIntervalSince1970 * 1000),
       @"address" : location.rgcData.locationDescribe ? location.rgcData.locationDescribe
                                               : @"",
       @"country" : location.rgcData.country ? location.rgcData.country : @"",
@@ -69,8 +74,6 @@ static NSString *const ONLOCATIONUPDATE       =   @"ON_LOCATION_UPDATE";
   return @{
       @"errorCode" : @(error.code),
       @"errorMessage": error.localizedDescription,
-      @"latitude" : @(location.location.coordinate.latitude),
-      @"longitude" : @(location.location.coordinate.longitude),
     };
 }
 

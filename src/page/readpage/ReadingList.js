@@ -13,28 +13,25 @@ import {
     Text
 } from 'react-native';
 
-import { Mapview, Geolocation } from '../../navite/map'
+import { Mapview, Geolocation, LocationManager } from '../../navite/map'
 
 export default class ReadingList extends PureComponent {
 
     state = {}
 
-    // componentDidMount() {
-    //     this.listener = Geolocation.watchPosition(location => {
-    //         console.log(location)
-    //         this.setState({
-    //             location,
-    //         })
-    //     }, error => {
-    //         console.log(error)
-    //     })
-    //     Geolocation.start()
-    // }
-    //
-    // componentWillUnmount() {
-    //     Geolocation.stop()
-    //     Geolocation.clearWatch(this.listener)
-    // }
+    componentDidMount() {
+        // Geolocation.fetchCurrentLocation(position => {
+        //     console.log('-------------', position)
+        // }, error => {
+        //     console.log('=============', error)
+        // })
+       this.listener = Geolocation.watchPosition(position => {
+            console.log(position)
+        }, error => {
+            console.log(error)
+        })
+        Geolocation.start()
+    }
 
     render() {
         return <View style={{flex: 1}}>

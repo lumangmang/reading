@@ -7,30 +7,58 @@
  *
  */
 
-export type AppKey = {
-    ios: string,
-    android: string,
+/**
+ * 开放平台应用key
+ */
+export interface AppKey {
+    ios: string;
+    android: string;
 }
 
-export type Location = {
-    latitude: number,
-    longitude: number,
-    errorCode?: number,
-    errorMessage?: string,
+/**
+ * 定位信息
+ */
+export interface Location {
+    // 定位精度
+    accuracy: number;
+    // 经纬度
+    latitude: number;
+    longitude: number;
+    // 海拔
+    altitude?: number;
+    // 移动速度
+    speed?: number;
+    // 移动方向
+    heading?: number;
+    // 定位时间(毫秒)
+    timestamp?: number;
+    // 错误码
+    errorCode?: number;
+    // 错误信息
+    errorMessage?: string;
 }
 
-export type ReGeocode = {
+/**
+ * 逆地理编码信息
+ */
+export interface ReGeocode {
+    // 详细地址
     address?: string;
+    // 国家
     country?: string;
+    // 省份
     province?: string;
+    // 城市
     city?: string;
+    // 城市编码
     cityCode?: string;
+    // 地区
     district?: string;
+    // 街道
     street?: string;
+    // 门牌号
     streetNumber?: string;
-    adCode?: string,
 }
-
 
 // 事件类型
 export const EventTypes = {

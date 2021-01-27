@@ -8,9 +8,8 @@
  */
 
 import { EmitterSubscription } from 'react-native'
-import { EventTypes } from "../types"
 import MapLocation from './map-location'
-import type { Location, ReGeocode } from "../types"
+import { Location, EventTypes } from "../types"
 
 let watchId = 0
 const watchMap: { [watchId: number]: EmitterSubscription } = {}
@@ -27,6 +26,29 @@ class LocationError {
     }
 }
 
+/**
+ * 坐标信息
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Coordinates
+ */
+export interface Coordinates {
+    latitude: number;
+    longitude: number;
+    altitude: number;
+    accuracy: number;
+    heading: number;
+    speed: number;
+}
+
+/**
+ * 定位信息
+ * @see https://developer.mozilla.org/zh-CN/docs/Web/API/Position
+ */
+export interface Position {
+    coords: Coordinates;
+    timestamp: number;
+    location: Location;
+}
+
 export default class Geolocation {
 
     /**
@@ -35,7 +57,7 @@ export default class Geolocation {
      * @param error 定位失败回调错误信息
      */
     static fetchCurrentLocation(
-        success: (position: (Location & ReGeocode)) => void,
+        success: (position: Position) => void,
         error?: (error: LocationError) => void,
     ) {
         MapLocation.currentLocation()
@@ -45,7 +67,7 @@ export default class Geolocation {
                     error && error(new LocationError(location.errorCode, location.errorMessage, location))
                     return listener.remove()
                 }
-                success(location)
+                success(toPosition(location))
                 return listener.remove()
             })
     }
@@ -57,7 +79,7 @@ export default class Geolocation {
      * @returns {number}
      */
     static watchPosition(
-        success: (position: (Location & ReGeocode)) => void,
+        success: (position: Position) => void,
         error?: (error: LocationError) => void,
     ) {
         watchMap[++watchId] = MapLocation.addLocationListener(EventTypes.onLocationUpdate,
@@ -65,7 +87,7 @@ export default class Geolocation {
                 if (location.errorCode) {
                     error && error(new LocationError(location.errorCode, location.errorMessage, location));
                 } else {
-                    success(location)
+                    success(toPosition(location))
                 }
             })
         return watchId
@@ -98,5 +120,20 @@ export default class Geolocation {
     }
 }
 
+
+function toPosition(location: Location) {
+    return {
+        location,
+        coords: {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            altitude: location.altitude,
+            accuracy: location.accuracy,
+            heading: location.heading,
+            speed: location.speed,
+        },
+        timestamp: location.timestamp,
+    };
+}
 
 
