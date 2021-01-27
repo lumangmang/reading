@@ -12,7 +12,8 @@ import { PropTypes } from 'prop-types'
 import { requireNativeComponent, ViewPropTypes } from 'react-native'
 
 import { mapEventsPropType, LatLngPropType, LocationPropType } from '../prop-types'
-import Component from "../component";
+import type { LatLng, Location, MapStatus, Point, Region } from '../map-types'
+import Component from "../component"
 
 const events = [
     'onLoad',
@@ -23,12 +24,46 @@ const events = [
 ]
 
 type Status = {
+    center?: LatLng,
+    point?: Point,
+    region?: Region,
     overlook?: number,
     rotation?: number,
     zoomLevel?: number,
 }
 
-export default class Mapview extends Component {
+type Props = {
+    satellite?: boolean,
+    trafficEnabled?: boolean,
+    baiduHeatMapEnabled?: boolean,
+    indoorEnabled?: boolean,
+    buildingsDisabled?: boolean,
+    minZoomLevel?: number,
+    maxZoomLevel?: number,
+    compassDisabled?: boolean,
+    zoomControlsDisabled?: boolean,
+    scaleBarDisabled?: boolean,
+    scrollDisabled?: boolean,
+    overlookDisabled?: boolean,
+    rotateDisabled?: boolean,
+    zoomDisabled?: boolean,
+    center?: LatLng,
+    zoomLevel?: number,
+    rotation?: number,
+    overlook?: number,
+    paused?: boolean,
+    locationEnabled?: boolean,
+    location?: Location,
+    locationMode?: 'normal' | 'follow' | 'compass',
+    compassMode?: true,
+    onLoad?: () => {},
+    onClick?: LatLng => {},
+    onLongClick?: LatLng => {},
+    onDoubleClick?: LatLng => {},
+    onStatusChange?: MapStatus => {},
+} & ViewPropTypes
+
+export default class Mapview extends Component<Props> {
 
     static propTypes = {
         ...ViewPropTypes,
@@ -67,7 +102,7 @@ export default class Mapview extends Component {
         // 是否显示定位图层
         locationEnabled: PropTypes.bool,
         // 用户位置信息
-        location: PropTypes.object,
+        location: LocationPropType,
         // 定位模式
         locationMode: PropTypes.string,
         // 暂停用户跟踪

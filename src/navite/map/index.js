@@ -10,19 +10,22 @@
 import Geolocation from "./location/location"
 import MapInitializer from './modules/initializer'
 import Mapview from "./views"
-
 import LocationManager from './location/map-location'
 
 export default {
-    Mapview,
+    // 定位相关
     Geolocation,
     LocationManager,
+    // 地图相关
+    Mapview,
     MapInitializer,
 }
 
 export {
-    Mapview,
+    // 定位相关
     Geolocation,
     LocationManager,
+    // 地图相关
+    Mapview,
     MapInitializer,
 }

@@ -20,26 +20,17 @@ export default class ReadingList extends PureComponent {
     state = {}
 
     componentDidMount() {
-        // Geolocation.fetchCurrentLocation(position => {
-        //     console.log('-------------', position)
-        // }, error => {
-        //     console.log('=============', error)
-        // })
-       this.listener = Geolocation.watchPosition(position => {
-            console.log(position)
-        }, error => {
-            console.log(error)
-        })
-        Geolocation.start()
+
     }
 
     render() {
         return <View style={{flex: 1}}>
             <Mapview
                 style={{flex: 1}}
-                minZoomLevel={5}
-                maxZoomLevel={20}
-                zoomLevel={15}
+                // minZoomLevel={5}
+                // maxZoomLevel={20}
+                // satellite
+                zoomLevel={14}
                 // compassDisabled={false}
                 // trafficEnabled={true}
                 // scaleBarDisabled={false}
