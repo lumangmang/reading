@@ -30,6 +30,7 @@
 		89AF95C825BE63780039470C /* RNTInitializerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AF95C725BE63780039470C /* RNTInitializerModule.m */; };
 		89AF95CF25BE67000039470C /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AF95CE25BE67000039470C /* RNTMapView.m */; };
 		89AF95D525BE678C0039470C /* RNTMapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AF95D425BE678C0039470C /* RNTMapViewManager.m */; };
+		89B8382825C14A2C00F4E032 /* RNTCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8382725C14A2C00F4E032 /* RNTCoordinate.m */; };
 		89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206825ABF7FC0074090D /* RNTScrollView.m */; };
 		89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,8 @@
 		89AF95CD25BE67000039470C /* RNTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMapView.h; sourceTree = "<group>"; };
 		89AF95CE25BE67000039470C /* RNTMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapView.m; sourceTree = "<group>"; };
 		89AF95D425BE678C0039470C /* RNTMapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapViewManager.m; sourceTree = "<group>"; };
+		89B8382625C14A2C00F4E032 /* RNTCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTCoordinate.h; sourceTree = "<group>"; };
+		89B8382725C14A2C00F4E032 /* RNTCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCoordinate.m; sourceTree = "<group>"; };
 		89C9206725ABF7FC0074090D /* RNTScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTScrollView.h; sourceTree = "<group>"; };
 		89C9206825ABF7FC0074090D /* RNTScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollView.m; sourceTree = "<group>"; };
 		89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollViewManager.m; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 			children = (
 				89AF95C225BE62B70039470C /* MapView */,
 				89AF95BD25BE60F90039470C /* Modules */,
+				89B8382625C14A2C00F4E032 /* RNTCoordinate.h */,
+				89B8382725C14A2C00F4E032 /* RNTCoordinate.m */,
 			);
 			path = RNTMapkit;
 			sourceTree = "<group>";
@@ -796,6 +801,7 @@
 				89AF95CF25BE67000039470C /* RNTMapView.m in Sources */,
 				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
 				895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */,
+				89B8382825C14A2C00F4E032 /* RNTCoordinate.m in Sources */,
 				89AF95D525BE678C0039470C /* RNTMapViewManager.m in Sources */,
 				895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
