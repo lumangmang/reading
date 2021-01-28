@@ -18,6 +18,13 @@ export const PointPropType = PropTypes.shape({
     y: PropTypes.number.isRequired,
 })
 
+export const LocationPropType = PropTypes.shape({
+    accuracy: PropTypes.number,
+    direction: PropTypes.number,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+})
+
 export function mapEventsPropType(events) {
     return events.reduce((props, event) => {
         props[event.replace(/^on/, 'onBaiduMap')] = PropTypes.func

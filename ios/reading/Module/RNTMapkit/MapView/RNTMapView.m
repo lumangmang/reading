@@ -9,14 +9,12 @@
 
 #import "RNTMarker.h"
 #import "RNTCoordinate.h"
+#import "RNTUserLocation.h"
 
 #import <React/UIView+React.h>
-#import <BaiduMapAPI_Map/BMKPointAnnotation.h>
-#import <BMKLocationKit/BMKLocationManager.h>
 
 @implementation RNTMapView {
   NSMutableDictionary *_markers;
-  BMKUserLocation *_userLocation;
 }
 
 - (instancetype)init {
@@ -46,14 +44,8 @@
 
 /// 动态更新我的位置数据
 /// @param locationData 当前位置
-- (void)setLocationData:(NSDictionary *)locationData {
-  if (!_userLocation) {
-    _userLocation = [[BMKUserLocation alloc] init];
-  }
-  CLLocationCoordinate2D coord = [RNTCoordinate coord:locationData];
-  CLLocation *location = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
-  _userLocation.location = location;
-  [self updateLocationData:_userLocation];
+- (void)setLocationData:(RNTUserLocation *)locationData {
+  [self updateLocationData:locationData];
 }
 
 // MARK: - BMKMapViewDelegate

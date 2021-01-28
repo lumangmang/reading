@@ -28,6 +28,7 @@
 		8971AD7425C2522600D29E28 /* RNTMarkerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD7325C2522600D29E28 /* RNTMarkerManager.m */; };
 		8971AD7C25C2562700D29E28 /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971AD7A25C2562700D29E28 /* marker@2x.png */; };
 		8971AD7D25C2562700D29E28 /* marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971AD7B25C2562700D29E28 /* marker@3x.png */; };
+		8971AD8425C2AFFF00D29E28 /* RNTUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD8325C2AFFF00D29E28 /* RNTUserLocation.m */; };
 		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
 		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
 		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
@@ -104,6 +105,8 @@
 		8971AD7325C2522600D29E28 /* RNTMarkerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMarkerManager.m; sourceTree = "<group>"; };
 		8971AD7A25C2562700D29E28 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@2x.png"; sourceTree = "<group>"; };
 		8971AD7B25C2562700D29E28 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@3x.png"; sourceTree = "<group>"; };
+		8971AD8225C2AFFF00D29E28 /* RNTUserLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTUserLocation.h; sourceTree = "<group>"; };
+		8971AD8325C2AFFF00D29E28 /* RNTUserLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTUserLocation.m; sourceTree = "<group>"; };
 		8985DD4D25B142CC0003C530 /* RNTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableView.swift; sourceTree = "<group>"; };
 		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
 		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				89AF95BD25BE60F90039470C /* Modules */,
 				89B8382625C14A2C00F4E032 /* RNTCoordinate.h */,
 				89B8382725C14A2C00F4E032 /* RNTCoordinate.m */,
+				8971AD8225C2AFFF00D29E28 /* RNTUserLocation.h */,
+				8971AD8325C2AFFF00D29E28 /* RNTUserLocation.m */,
 				89B8385425C171AD00F4E032 /* RCTConvert+Map.m */,
 			);
 			path = RNTMapkit;
@@ -840,6 +845,7 @@
 				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
 				8971AD6E25C2520400D29E28 /* RNTMarker.m in Sources */,
 				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
+				8971AD8425C2AFFF00D29E28 /* RNTUserLocation.m in Sources */,
 				8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */,
 				89AF95C825BE63780039470C /* RNTInitializerModule.m in Sources */,
 			);

@@ -30,7 +30,7 @@ RCT_EXPORT_VIEW_PROPERTY(scrollGesturesEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(zoomGesturesEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(trafficEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(baiduHeatMapEnabled, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(locationData, NSDictionary *)
+RCT_EXPORT_VIEW_PROPERTY(locationData, RNTUserLocation)
 RCT_EXPORT_VIEW_PROPERTY(userTrackingMode, BMKUserTrackingMode)
 
 // events

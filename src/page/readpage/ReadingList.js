@@ -15,7 +15,7 @@ import {
     Text
 } from 'react-native';
 
-import { Mapview, Geolocation, LocationManager, Overlay } from '../../navite/map'
+import { Mapview, Geolocation, LocationManager } from '../../navite/map'
 const style = StyleSheet.create({
     marker: {
         flexDirection: "row",
@@ -39,12 +39,12 @@ const style = StyleSheet.create({
     }
 });
 export default class ReadingList extends PureComponent {
-    // state = {
-    //     location: {},
-    //     center: {longitude: 113.950453, latitude: 22.546045},
-    // }
+    state = {
+        location: {},
+        center: {latitude: 39.914884, longitude: 116.403883},
+    }
 
-    state = { time: new Date() };
+    // state = { time: new Date() };
 
     componentDidMount() {
         // 单次定位
@@ -61,25 +61,25 @@ export default class ReadingList extends PureComponent {
         // })
 
         // 连续定位
-        // this.listener = Geolocation.watchPosition(position => {
-        //     console.log(position)
-        //     this.setState({
-        //                 location: position.location,
-        //             })
-        // }, error => {
-        //     console.log(error)
-        // })
-        // Geolocation.start()
+        this.listener = Geolocation.watchPosition(position => {
+            // console.log(position)
+            this.setState({
+                        location: position.location,
+                    })
+        }, error => {
+            console.log(error)
+        })
+        Geolocation.start()
 
-        this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
+        // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
     componentWillUnmount() {
         // 移除连续定位
-        // Geolocation.stop()
-        // Geolocation.clearWatch(this.listener)
+        Geolocation.stop()
+        Geolocation.clearWatch(this.listener)
 
-        clearInterval(this.timer);
+        // clearInterval(this.timer);
     }
 
     renderMarker = () => (
@@ -102,39 +102,41 @@ export default class ReadingList extends PureComponent {
             location,
             center
         } = this.state;
+        console.log(location)
         return <View style={{flex: 1}}>
             <Mapview style={{flex: 1}}
-                     zoom={11}
+                     zoom={14}
                      // showsUserLocation={true}
-                     // locationData={location}
-                     // userTrackingMode={'follow'}
-                     // mapType={'standard'}
+                     userTrackingMode={'follow'}
+                     mapType={'standard'}
                      // center={center}
+                     locationData={location}
             >
-                <Mapview.Marker
+                {/*<Mapview.Marker*/}
 
-                    // custom
-                    // ref={ref => (this.marker = ref)}
-                    // title="This is a custom view"
-                    // view={this.renderMarker}
-                    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}
+                {/*    // custom*/}
+                {/*    // ref={ref => (this.marker = ref)}*/}
+                {/*    // title="This is a custom view"*/}
+                {/*    // view={this.renderMarker}*/}
+                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
 
-                    // onPress={() => console.log("You pressed the marker!")}
-                    // title="This is a marker"
-                    // color="red"
-                    // draggable
-                    // onDrag={() => console.log('----------')}
-                    // onCalloutPress={() => console.log("You pressed the callout!")}
-                    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}
+                {/*    // onPress={() => console.log("You pressed the marker!")}*/}
+                {/*    // title="This is a marker"*/}
+                {/*    // color="red"*/}
+                {/*    // draggable*/}
+                {/*    // onDrag={() => console.log('----------')}*/}
+                {/*    // onCalloutPress={() => console.log("You pressed the callout!")}*/}
+                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
 
-                    selected
-                    draggable
-                    title="This is a draggable marker"
-                    onDragEnd={coordinate =>
-                        console.log(`${coordinate.latitude}, ${coordinate.longitude}`)
-                    }
-                    coordinate={{ latitude: 39.914884, longitude: 116.403883 }}
-                />
+                {/*    // selected*/}
+                {/*    // draggable*/}
+                {/*    // title="This is a draggable marker"*/}
+                {/*    // onDragEnd={coordinate =>*/}
+                {/*    //     console.log(`${coordinate.latitude}, ${coordinate.longitude}`)*/}
+                {/*    // }*/}
+                {/*    // // flat={true}*/}
+                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
+                {/*/>*/}
             </Mapview>
         </View>;
     }
