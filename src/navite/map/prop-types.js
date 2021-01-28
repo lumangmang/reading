@@ -9,8 +9,8 @@
 import PropTypes from 'prop-types'
 
 export const LatLngPropType = PropTypes.shape({
-    latitude: PropTypes.number.isRequired,
-    longitude: PropTypes.number.isRequired,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
 })
 
 export const PointPropType = PropTypes.shape({
@@ -18,12 +18,6 @@ export const PointPropType = PropTypes.shape({
     y: PropTypes.number.isRequired,
 })
 
-export const LocationPropType = PropTypes.shape({
-    accuracy: PropTypes.number,
-    direction: PropTypes.number,
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-})
 
 export function mapEventsPropType(events) {
     return events.reduce((props, event) => {

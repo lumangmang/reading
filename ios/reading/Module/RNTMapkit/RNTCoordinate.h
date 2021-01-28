@@ -11,9 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RNTCoordinate : NSObject
 
-+ (CLLocationCoordinate2D)coord:(NSDictionary *)json;
-+ (void)updateCoords:(NSArray *)points result:(CLLocationCoordinate2D *)result;
-+ (UIColor *)hexColor:(NSString *)hexString;
+@property(nonatomic, assign) CLLocationCoordinate2D coordinate;
+
+- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
 

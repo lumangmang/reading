@@ -61,23 +61,23 @@ export default class ReadingList extends PureComponent {
         // })
 
         // 连续定位
-        this.listener = Geolocation.watchPosition(position => {
-            // console.log(position)
-            this.setState({
-                        location: position.location,
-                    })
-        }, error => {
-            console.log(error)
-        })
-        Geolocation.start()
+        // this.listener = Geolocation.watchPosition(position => {
+        //     // console.log(position)
+        //     this.setState({
+        //                 location: position.location,
+        //             })
+        // }, error => {
+        //     console.log(error)
+        // })
+        // Geolocation.start()
 
         // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
     componentWillUnmount() {
         // 移除连续定位
-        Geolocation.stop()
-        Geolocation.clearWatch(this.listener)
+        // Geolocation.stop()
+        // Geolocation.clearWatch(this.listener)
 
         // clearInterval(this.timer);
     }
@@ -107,10 +107,9 @@ export default class ReadingList extends PureComponent {
             <Mapview style={{flex: 1}}
                      zoom={14}
                      // showsUserLocation={true}
-                     userTrackingMode={'follow'}
-                     mapType={'standard'}
-                     // center={center}
-                     locationData={location}
+                     // userTrackingMode={'follow'}
+                     // mapType={'standard'}
+                     // locationData={location}
             >
                 {/*<Mapview.Marker*/}
 
@@ -126,7 +125,7 @@ export default class ReadingList extends PureComponent {
                 {/*    // draggable*/}
                 {/*    // onDrag={() => console.log('----------')}*/}
                 {/*    // onCalloutPress={() => console.log("You pressed the callout!")}*/}
-                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
+                {/*    // coordinate={location}*/}
 
                 {/*    // selected*/}
                 {/*    // draggable*/}

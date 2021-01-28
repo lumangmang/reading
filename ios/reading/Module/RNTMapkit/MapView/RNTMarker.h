@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+
 @property (nonatomic, weak) RNTMapView *mapView;
 - (BMKAnnotationView *)annotationView;
 

@@ -5,6 +5,7 @@
 //  Created by Devin on 2021/1/27.
 //
 
+#import "RNTCoordinate.h"
 #import "RNTUserLocation.h"
 
 #import <React/RCTConvert.h>
@@ -12,16 +13,16 @@
 
 @implementation RCTConvert (Map)
 
++ (RNTCoordinate *)RNTCoordinate:(id)json {
+    return [[RNTCoordinate alloc] initWithCoordinate:[self CLLocationCoordinate2D:json]];
+}
+
 + (RNTUserLocation *)RNTUserLocation:(id)json {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(
-        [json[@"latitude"] doubleValue], [json[@"longitude"] doubleValue]);
-    CLLocation *cllocation = [[CLLocation alloc] initWithCoordinate:coordinate
-                                                           altitude:[json[@"altitude"] doubleValue]
-                                                 horizontalAccuracy:[json[@"accuracy"] doubleValue]
-                                                   verticalAccuracy:0
-                                                          timestamp:[NSDate new]];
+    CLLocation *cllocation = [[CLLocation alloc] initWithLatitude:[json[@"latitude"] doubleValue] longitude:[json[@"longitude"] doubleValue]];
     return [[RNTUserLocation alloc] initWithCLLocation:cllocation];
 }
+
+RCT_ARRAY_CONVERTER(RNTCoordinate)
 
 RCT_ENUM_CONVERTER(BMKUserTrackingMode, (@{
      @"normal": @(BMKUserTrackingModeHeading),

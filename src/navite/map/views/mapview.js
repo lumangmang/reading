@@ -14,7 +14,7 @@ import {
     ViewPropTypes,
 } from 'react-native'
 
-import { mapEventsPropType, LatLngPropType, LocationPropType } from '../prop-types'
+import { mapEventsPropType, LatLngPropType } from '../prop-types'
 import Component from "./component";
 
 const events = [
@@ -47,7 +47,7 @@ export default class Mapview extends Component {
         scrollGesturesEnabled: PropTypes.bool,
         zoomGesturesEnabled: PropTypes.bool,
         center: LatLngPropType,
-        locationData: LocationPropType,
+        locationData: LatLngPropType,
         userTrackingMode: PropTypes.oneOf(['normal', 'compass', 'follow']),
     }
 
