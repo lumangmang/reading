@@ -8,18 +8,20 @@
 #import "RNTMapView.h"
 
 #import "RNTMarker.h"
-#import "RNTCoordinate.h"
+#import "RNTOverlay.h"
 #import "RNTUserLocation.h"
 
 #import <React/UIView+React.h>
 
 @implementation RNTMapView {
   NSMutableDictionary *_markers;
+  NSMutableDictionary *_overlays;
 }
 
 - (instancetype)init {
   if (self = [super init]) {
     _markers = [NSMutableDictionary new];
+    _overlays = [NSMutableDictionary new];
     self.delegate = self;
   }
   return self;
@@ -121,6 +123,11 @@
   return nil;
 }
 
+- (BMKOverlayView *)mapView:(RNTMapView *)mapView viewForOverlay:(id <BMKOverlay>)overlay {
+    RNTOverlay *o = [self getOverlay:overlay];
+    return o.overlayView;
+}
+
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
   RNTMarker *marker = [self getMarker:view.annotation];
   [marker bindCalloutPressHandler];
@@ -153,6 +160,9 @@ didChangeDragState:(BMKAnnotationViewDragState)newState
 - (RNTMarker *)getMarker:(id <BMKAnnotation>)annotation {
     return _markers[[@(annotation.hash) stringValue]];
 }
+- (RNTOverlay *)getOverlay:(id <BMKOverlay>)overlay {
+    return _overlays[[@(overlay.hash) stringValue]];
+}
 
 // MARK: - JavaScript Method
 - (void)didAddSubview:(UIView *)subview {
@@ -162,6 +172,12 @@ didChangeDragState:(BMKAnnotationViewDragState)newState
     _markers[[@(marker.hash) stringValue]] = marker;
     [self addAnnotation:marker];
   }
+  if ([subview isKindOfClass:[RNTOverlay class]]) {
+    RNTOverlay *overlay = (RNTOverlay *)subview;
+      overlay.mapView = self;
+      _overlays[[@(overlay.overlay.hash) stringValue]] = overlay;
+      [self addOverlay:overlay.overlay];
+  }
 }
 
 - (void)removeReactSubview:(UIView *)subview {
@@ -170,6 +186,11 @@ didChangeDragState:(BMKAnnotationViewDragState)newState
       RNTMarker *marker = (RNTMarker *) subview;
       [_markers removeObjectForKey:[@(marker.annotation.hash) stringValue]];
       [self removeAnnotation:marker];
+  }
+  if ([subview isKindOfClass:[RNTOverlay class]]) {
+    RNTOverlay *overlay = (RNTOverlay *)subview;
+      _overlays[[@(overlay.hash) stringValue]] = overlay;
+      [self removeOverlay:overlay.overlay];
   }
 }
 @end

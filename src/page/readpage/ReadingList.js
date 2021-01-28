@@ -38,13 +38,29 @@ const style = StyleSheet.create({
         fontSize: 12
     }
 });
-export default class ReadingList extends PureComponent {
-    state = {
-        location: {},
-        center: {latitude: 39.914884, longitude: 116.403883},
-    }
 
-    // state = { time: new Date() };
+const points = [
+    {
+        latitude: 39.806901,
+        longitude: 116.397972
+    },
+    {
+        latitude: 39.806901,
+        longitude: 116.297972
+    },
+    {
+        latitude: 39.906901,
+        longitude: 116.397972
+    }
+];
+
+export default class ReadingList extends PureComponent {
+    // state = {
+    //     location: {},
+    //     center: {latitude: 39.914884, longitude: 116.403883},
+    // }
+
+    state = { time: new Date() };
 
     componentDidMount() {
         // 单次定位
@@ -71,7 +87,7 @@ export default class ReadingList extends PureComponent {
         // })
         // Geolocation.start()
 
-        // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
+        this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
     componentWillUnmount() {
@@ -79,7 +95,7 @@ export default class ReadingList extends PureComponent {
         // Geolocation.stop()
         // Geolocation.clearWatch(this.listener)
 
-        // clearInterval(this.timer);
+        clearInterval(this.timer);
     }
 
     renderMarker = () => (
@@ -105,19 +121,26 @@ export default class ReadingList extends PureComponent {
         console.log(location)
         return <View style={{flex: 1}}>
             <Mapview style={{flex: 1}}
-                     zoom={14}
+                     // zoom={14}
                      // showsUserLocation={true}
                      // userTrackingMode={'follow'}
                      // mapType={'standard'}
                      // locationData={location}
             >
+                <Mapview.Polyline
+                    points={points}
+                    width={5}
+                    color="rgba(0, 0, 255, 0.5)"
+                />
                 {/*<Mapview.Marker*/}
 
                 {/*    // custom*/}
-                {/*    // ref={ref => (this.marker = ref)}*/}
-                {/*    // title="This is a custom view"*/}
-                {/*    // view={this.renderMarker}*/}
-                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
+                {/*    selected*/}
+                {/*    */}
+                {/*    ref={ref => (this.marker = ref)}*/}
+                {/*    title="This is a custom view"*/}
+                {/*    view={this.renderMarker}*/}
+                {/*    coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
 
                 {/*    // onPress={() => console.log("You pressed the marker!")}*/}
                 {/*    // title="This is a marker"*/}
@@ -127,14 +150,7 @@ export default class ReadingList extends PureComponent {
                 {/*    // onCalloutPress={() => console.log("You pressed the callout!")}*/}
                 {/*    // coordinate={location}*/}
 
-                {/*    // selected*/}
-                {/*    // draggable*/}
-                {/*    // title="This is a draggable marker"*/}
-                {/*    // onDragEnd={coordinate =>*/}
-                {/*    //     console.log(`${coordinate.latitude}, ${coordinate.longitude}`)*/}
-                {/*    // }*/}
-                {/*    // // flat={true}*/}
-                {/*    // coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
+
                 {/*/>*/}
             </Mapview>
         </View>;

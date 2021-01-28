@@ -9,7 +9,9 @@
 
 import Mapview from "./mapview"
 import Marker from "./marker"
+import Polyline from './polyline'
 
 Mapview.Marker = Marker
+Mapview.Polyline = Polyline
 
 export default Mapview
