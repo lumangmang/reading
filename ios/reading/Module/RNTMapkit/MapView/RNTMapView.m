@@ -6,26 +6,28 @@
 //
 
 #import "RNTMapView.h"
+
+#import "RNTMarker.h"
 #import "RNTCoordinate.h"
 
 #import <React/UIView+React.h>
+#import <BaiduMapAPI_Map/BMKPointAnnotation.h>
 #import <BMKLocationKit/BMKLocationManager.h>
 
 @implementation RNTMapView {
-  NSMutableArray *_annotations;
-  NSMutableSet *_markers;
+  NSMutableDictionary *_markers;
   BMKUserLocation *_userLocation;
 }
 
 - (instancetype)init {
   if (self = [super init]) {
+    _markers = [NSMutableDictionary new];
     self.delegate = self;
   }
   return self;
 }
 
-// MARK: - Setter
-
+// MARK: - Property Setter
 /// 地图比例尺级别
 /// @param zoom 4~21
 - (void)setZoom:(float)zoom {
@@ -42,15 +44,6 @@
   self.scrollEnabled = scrollGesturesEnabled;
 }
 
-/// 当前地图的中心点，改变该值时，地图的比例尺级别不会发生变化
-/// @param LatLngObj 中心点经纬度
-- (void)setCenterLatLng:(NSDictionary *)LatLngObj {
-  double lat = [RCTConvert double:LatLngObj[@"lat"]];
-  double lng = [RCTConvert double:LatLngObj[@"lng"]];
-  CLLocationCoordinate2D point = CLLocationCoordinate2DMake(lat, lng);
-  self.centerCoordinate = point;
-}
-
 /// 动态更新我的位置数据
 /// @param locationData 当前位置
 - (void)setLocationData:(NSDictionary *)locationData {
@@ -64,87 +57,127 @@
 }
 
 // MARK: - BMKMapViewDelegate
-- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate {
-  NSDictionary *event = @{
-    @"type": @"onMapDoubleClick",
-    @"params": @{
-            @"latitude": @(coordinate.latitude),
-            @"longitude": @(coordinate.longitude)
-            }
-  };
-  [self sendEvent:event];
+- (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
+  if (self.onBaiduMapLoad) {
+    self.onBaiduMapLoad(nil);
+  }
 }
 
 - (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {
-  NSDictionary* event = @{
-                          @"type": @"onMapClick",
-                          @"params": @{
-                                  @"latitude": @(coordinate.latitude),
-                                  @"longitude": @(coordinate.longitude)
-                                  }
-                          };
-  [self sendEvent:event];
-}
-
-- (void)mapViewDidFinishLoading:(BMKMapView *)mapView {
-  NSDictionary* event = @{
-                          @"type": @"onMapLoaded",
-                          @"params": @{}
-                          };
-  [self sendEvent:event];
+  if (self.onBaiduMapClick) {
+    self.onBaiduMapClick(@{
+      @"latitude": @(coordinate.latitude),
+      @"longitude": @(coordinate.longitude),
+                         });
+  }
 }
 
 - (void)mapView:(BMKMapView *)mapView onClickedMapPoi:(BMKMapPoi *)mapPoi {
-  NSDictionary* event = @{
-                          @"type": @"onMapPoiClick",
-                          @"params": @{
-                                  @"name": mapPoi.text,
-                                  @"uid": mapPoi.uid,
-                                  @"latitude": @(mapPoi.pt.latitude),
-                                  @"longitude": @(mapPoi.pt.longitude)
-                                  }
-                          };
-  [self sendEvent:event];
+  if (self.onBaiduMapClick) {
+    self.onBaiduMapClick(@{
+        @"latitude": @(mapPoi.pt.latitude),
+        @"longitude": @(mapPoi.pt.longitude),
+        @"uid": mapPoi.uid,
+        @"name": mapPoi.text,
+    });
+  }
 }
 
-- (void)mapStatusDidChanged:(BMKMapView *)mapView {
-  CLLocationCoordinate2D targetGeoPt = [mapView getMapStatus].targetGeoPt;
-  BMKCoordinateRegion region = mapView.region;
-  NSDictionary* event = @{
-                          @"type": @"onMapStatusChange",
-                          @"params": @{
-                                  @"target": @{
-                                          @"latitude": @(targetGeoPt.latitude),
-                                          @"longitude": @(targetGeoPt.longitude)
-                                          },
-                                  @"latitudeDelta": @(region.span.latitudeDelta),
-                                  @"longitudeDelta": @(region.span.longitudeDelta),
-                                  @"zoom": @(mapView.zoomLevel),
-                                  @"overlook": @""
-                                  }
-                          };
-  [self sendEvent:event];
+- (void)mapview:(BMKMapView *)mapView onLongClick:(CLLocationCoordinate2D)coordinate {
+  if (self.onBaiduMapLongClick) {
+      self.onBaiduMapLongClick(@{
+         @"latitude": @(coordinate.latitude),
+         @"longitude": @(coordinate.longitude),
+      });
+  }
 }
 
-- (void)sendEvent:(NSDictionary *)parameters {
-  if (!self.onChange) return;
-  self.onChange(parameters);
+- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate {
+  if (self.onBaiduMapDoubleClick) {
+      self.onBaiduMapDoubleClick(@{
+         @"latitude": @(coordinate.latitude),
+         @"longitude": @(coordinate.longitude),
+      });
+  }
+}
+
+- (void)mapView:(RNTMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    if (self.onBaiduMapStatusChange) {
+        self.onBaiduMapStatusChange(@{
+            @"center": @{
+                @"latitude": @(self.centerCoordinate.latitude),
+                @"longitude": @(self.centerCoordinate.longitude),
+            },
+            @"region": @{
+                @"latitude": @(self.region.center.latitude),
+                @"longitude": @(self.region.center.longitude),
+                @"latitudeDelta": @(self.region.span.latitudeDelta),
+                @"longitudeDelta": @(self.region.span.longitudeDelta),
+            },
+            @"zoomLevel": @(self.zoomLevel),
+            @"rotation": @(self.rotation),
+            @"overlook": @(self.overlooking),
+        });
+    }
+}
+
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
+  if ([annotation isKindOfClass:[RNTMarker class]]) {
+    RNTMarker *marker = (RNTMarker *)annotation;
+    return marker.annotationView;
+  }
+  return nil;
+}
+
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+  RNTMarker *marker = [self getMarker:view.annotation];
+  [marker bindCalloutPressHandler];
+}
+
+- (void)mapView:(BMKMapView *)mapView
+ annotationView:(BMKAnnotationView *)view
+didChangeDragState:(BMKAnnotationViewDragState)newState
+   fromOldState:(BMKAnnotationViewDragState)oldState {
+    RNTMarker *marker = [self getMarker:view.annotation];
+    id coordinate = @{
+        @"latitude": @(view.annotation.coordinate.latitude),
+        @"longitude": @(view.annotation.coordinate.longitude),
+    };
+
+    if (newState == BMKAnnotationViewDragStateStarting && marker.onBaiduMapDragStart) {
+        marker.onBaiduMapDragStart(coordinate);
+    }
+
+    if (newState == BMKAnnotationViewDragStateDragging && marker.onBaiduMapDrag) {
+        marker.onBaiduMapDrag(coordinate);
+    }
+
+    if (newState == BMKAnnotationViewDragStateEnding && marker.onBaiduMapDragEnd) {
+        marker.onBaiduMapDragEnd(coordinate);
+    }
+}
+
+// MARK: - Event
+- (RNTMarker *)getMarker:(id <BMKAnnotation>)annotation {
+    return _markers[[@(annotation.hash) stringValue]];
 }
 
 // MARK: - JavaScript Method
-- (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex {
-  if (!_markers) {
-    _markers = [[NSMutableSet alloc] init];
+- (void)didAddSubview:(UIView *)subview {
+  if ([subview isKindOfClass:[RNTMarker class]]) {
+    RNTMarker *marker = (RNTMarker *)subview;
+    marker.mapView = self;
+    _markers[[@(marker.hash) stringValue]] = marker;
+    [self addAnnotation:marker];
   }
-  [super insertReactSubview:subview atIndex:atIndex];
 }
 
 - (void)removeReactSubview:(UIView *)subview {
-  [super removeReactSubview:subview];
+  [super removeReactSubview:(UIView *) subview];
+  if ([subview isKindOfClass:[RNTMarker class]]) {
+      RNTMarker *marker = (RNTMarker *) subview;
+      [_markers removeObjectForKey:[@(marker.annotation.hash) stringValue]];
+      [self removeAnnotation:marker];
+  }
 }
-
-- (void)didUpdateReactSubviews {
-  [super didUpdateReactSubviews];
-}
-
 @end

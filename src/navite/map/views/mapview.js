@@ -14,51 +14,63 @@ import {
     ViewPropTypes,
 } from 'react-native'
 
-import { MapTypes } from "../prop-types";
+import { mapEventsPropType } from '../prop-types'
+import Component from "./component";
 
-export default class Mapview extends PureComponent {
+const events = [
+    'onLoad',
+    'onClick',
+    'onLongClick',
+    'onDoubleClick',
+    'onStatusChange',
+]
+
+type Status = {
+    center?: PropTypes.object,
+    overlook?: number,
+    rotation?: number,
+    zoomLevel?: number,
+}
+
+export default class Mapview extends Component {
 
     static propTypes = {
         ...ViewPropTypes,
+        ...mapEventsPropType(events),
         trafficEnabled: PropTypes.bool,
         baiduHeatMapEnabled: PropTypes.bool,
-        mapType: PropTypes.number,
+        // 地图类型 `none` - 空白 `standard` - 标准 `satellite` - 卫星
+        // 默认标准地图
+        mapType: PropTypes.oneOf(['none', 'standard', 'satellite']),
         zoom: PropTypes.number,
         showsUserLocation: PropTypes.bool,
         scrollGesturesEnabled: PropTypes.bool,
         zoomGesturesEnabled: PropTypes.bool,
         center: PropTypes.object,
         locationData: PropTypes.object,
-        onMapStatusChange: PropTypes.func,
-        onMapLoaded: PropTypes.func,
-        onMapClick: PropTypes.func,
-        onMapDoubleClick: PropTypes.func,
-        onMarkerClick: PropTypes.func,
-        onMapPoiClick: PropTypes.func,
+        userTrackingMode: PropTypes.oneOf(['normal', 'compass', 'follow']),
     }
 
     static defaultProps = {
         trafficEnabled: false,
         baiduHeatMapEnabled: false,
-        mapType: MapTypes.NORMAL,
-        center: null,
-        zoom: 10,
         scrollGesturesEnabled: true,
         zoomGesturesEnabled: true,
-        showsUserLocation: false
+        showsUserLocation: true
     }
 
-    _onChange(event) {
-        if (typeof this.props[event.nativeEvent.type] === 'function') {
-            this.props[event.nativeEvent.type](event.nativeEvent.params);
-        }
+    nativeComponentName = 'BaiduMapView'
+    setStatus(status: Status, duration?: number) {
+        this.call('setStatus', [status, duration])
     }
 
     render() {
-        return <NativeMapView {...this.props} onChange={this._onChange.bind(this)}/>
+        const props = {
+            ...this.props,
+            ...this.handlers(events),
+        }
+        return <NativeMapView {...props}/>
     }
 }
 
-const NativeMapView = requireNativeComponent('BaiduMapView', Mapview, {
-    nativeOnly: {onChange: true}
-})
+const NativeMapView = requireNativeComponent('BaiduMapView', Mapview)

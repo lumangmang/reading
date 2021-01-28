@@ -24,6 +24,10 @@
 		895BC03A25B5240900E015CC /* RNTPageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895BC03925B5240900E015CC /* RNTPageViewManager.swift */; };
 		895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 895BC03F25B5242100E015CC /* RNTPageViewBridge.m */; };
 		895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 895BC04525B54E8B00E015CC /* RNTLocationManager.m */; };
+		8971AD6E25C2520400D29E28 /* RNTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD6D25C2520400D29E28 /* RNTMarker.m */; };
+		8971AD7425C2522600D29E28 /* RNTMarkerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD7325C2522600D29E28 /* RNTMarkerManager.m */; };
+		8971AD7C25C2562700D29E28 /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971AD7A25C2562700D29E28 /* marker@2x.png */; };
+		8971AD7D25C2562700D29E28 /* marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8971AD7B25C2562700D29E28 /* marker@3x.png */; };
 		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
 		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
 		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
@@ -31,6 +35,7 @@
 		89AF95CF25BE67000039470C /* RNTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AF95CE25BE67000039470C /* RNTMapView.m */; };
 		89AF95D525BE678C0039470C /* RNTMapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AF95D425BE678C0039470C /* RNTMapViewManager.m */; };
 		89B8382825C14A2C00F4E032 /* RNTCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8382725C14A2C00F4E032 /* RNTCoordinate.m */; };
+		89B8385525C171AD00F4E032 /* RCTConvert+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B8385425C171AD00F4E032 /* RCTConvert+Map.m */; };
 		89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206825ABF7FC0074090D /* RNTScrollView.m */; };
 		89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */; };
 /* End PBXBuildFile section */
@@ -94,6 +99,11 @@
 		895BC03925B5240900E015CC /* RNTPageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTPageViewManager.swift; sourceTree = "<group>"; };
 		895BC03F25B5242100E015CC /* RNTPageViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPageViewBridge.m; sourceTree = "<group>"; };
 		895BC04525B54E8B00E015CC /* RNTLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTLocationManager.m; sourceTree = "<group>"; };
+		8971AD6C25C2520400D29E28 /* RNTMarker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTMarker.h; sourceTree = "<group>"; };
+		8971AD6D25C2520400D29E28 /* RNTMarker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMarker.m; sourceTree = "<group>"; };
+		8971AD7325C2522600D29E28 /* RNTMarkerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMarkerManager.m; sourceTree = "<group>"; };
+		8971AD7A25C2562700D29E28 /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@2x.png"; sourceTree = "<group>"; };
+		8971AD7B25C2562700D29E28 /* marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker@3x.png"; sourceTree = "<group>"; };
 		8985DD4D25B142CC0003C530 /* RNTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableView.swift; sourceTree = "<group>"; };
 		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
 		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
@@ -104,6 +114,7 @@
 		89AF95D425BE678C0039470C /* RNTMapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTMapViewManager.m; sourceTree = "<group>"; };
 		89B8382625C14A2C00F4E032 /* RNTCoordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTCoordinate.h; sourceTree = "<group>"; };
 		89B8382725C14A2C00F4E032 /* RNTCoordinate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCoordinate.m; sourceTree = "<group>"; };
+		89B8385425C171AD00F4E032 /* RCTConvert+Map.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+Map.m"; sourceTree = "<group>"; };
 		89C9206725ABF7FC0074090D /* RNTScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTScrollView.h; sourceTree = "<group>"; };
 		89C9206825ABF7FC0074090D /* RNTScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollView.m; sourceTree = "<group>"; };
 		89C9206E25ABFAE40074090D /* RNTScrollViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTScrollViewManager.m; sourceTree = "<group>"; };
@@ -291,6 +302,15 @@
 			path = RNTPageView;
 			sourceTree = "<group>";
 		};
+		8971AD7925C2560F00D29E28 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8971AD7A25C2562700D29E28 /* marker@2x.png */,
+				8971AD7B25C2562700D29E28 /* marker@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		8985DD4B25B142150003C530 /* RNTTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,10 +324,12 @@
 		898AFA6425A6FF5200DF9EAB /* RNTMapkit */ = {
 			isa = PBXGroup;
 			children = (
+				8971AD7925C2560F00D29E28 /* Resource */,
 				89AF95C225BE62B70039470C /* MapView */,
 				89AF95BD25BE60F90039470C /* Modules */,
 				89B8382625C14A2C00F4E032 /* RNTCoordinate.h */,
 				89B8382725C14A2C00F4E032 /* RNTCoordinate.m */,
+				89B8385425C171AD00F4E032 /* RCTConvert+Map.m */,
 			);
 			path = RNTMapkit;
 			sourceTree = "<group>";
@@ -327,6 +349,9 @@
 				89AF95CD25BE67000039470C /* RNTMapView.h */,
 				89AF95CE25BE67000039470C /* RNTMapView.m */,
 				89AF95D425BE678C0039470C /* RNTMapViewManager.m */,
+				8971AD6C25C2520400D29E28 /* RNTMarker.h */,
+				8971AD6D25C2520400D29E28 /* RNTMarker.m */,
+				8971AD7325C2522600D29E28 /* RNTMarkerManager.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -502,6 +527,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				8971AD7D25C2562700D29E28 /* marker@3x.png in Resources */,
+				8971AD7C25C2562700D29E28 /* marker@2x.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,13 +829,16 @@
 				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
 				895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */,
 				89B8382825C14A2C00F4E032 /* RNTCoordinate.m in Sources */,
+				89B8385525C171AD00F4E032 /* RCTConvert+Map.m in Sources */,
 				89AF95D525BE678C0039470C /* RNTMapViewManager.m in Sources */,
 				895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */,
+				8971AD7425C2522600D29E28 /* RNTMarkerManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				895BC03425B523B800E015CC /* RNTPageView.swift in Sources */,
 				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
+				8971AD6E25C2520400D29E28 /* RNTMarker.m in Sources */,
 				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
 				8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */,
 				89AF95C825BE63780039470C /* RNTInitializerModule.m in Sources */,

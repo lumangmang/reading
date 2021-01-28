@@ -8,5 +8,8 @@
  */
 
 import Mapview from "./mapview"
+import Marker from "./marker"
+
+Mapview.Marker = Marker
 
 export default Mapview

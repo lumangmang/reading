@@ -6,13 +6,21 @@
  * All rights reserved.
  *
  */
+import PropTypes from 'prop-types'
 
-/**
- * 地图类型 `NONE`: 空白，`NORMAL`: 普通，`SATELLITE`: 卫星
- * @type {{SATELLITE: number, NONE: number, NORMAL: number}}
- */
-export const MapTypes = {
-    NONE: 0,
-    NORMAL: 1,
-    SATELLITE: 2
+export const LatLngPropType = PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+})
+
+export const PointPropType = PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+})
+
+export function mapEventsPropType(events) {
+    return events.reduce((props, event) => {
+        props[event.replace(/^on/, 'onBaiduMap')] = PropTypes.func
+        return props
+    }, {})
 }
