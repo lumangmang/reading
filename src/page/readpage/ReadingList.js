@@ -60,7 +60,7 @@ export default class ReadingList extends PureComponent {
     //     center: {latitude: 39.914884, longitude: 116.403883},
     // }
 
-    state = { time: new Date() };
+    // state = { time: new Date() };
 
     componentDidMount() {
         // 单次定位
@@ -87,7 +87,7 @@ export default class ReadingList extends PureComponent {
         // })
         // Geolocation.start()
 
-        this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
+        // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
     componentWillUnmount() {
@@ -95,7 +95,7 @@ export default class ReadingList extends PureComponent {
         // Geolocation.stop()
         // Geolocation.clearWatch(this.listener)
 
-        clearInterval(this.timer);
+        // clearInterval(this.timer);
     }
 
     renderMarker = () => (
@@ -114,11 +114,11 @@ export default class ReadingList extends PureComponent {
     );
 
     render() {
-        const {
-            location,
-            center
-        } = this.state;
-        console.log(location)
+        // const {
+        //     location,
+        //     center
+        // } = this.state;
+        // console.log(location)
         return <View style={{flex: 1}}>
             <Mapview style={{flex: 1}}
                      // zoom={14}
@@ -132,26 +132,16 @@ export default class ReadingList extends PureComponent {
                     width={5}
                     color="rgba(0, 0, 255, 0.5)"
                 />
-                {/*<Mapview.Marker*/}
-
-                {/*    // custom*/}
-                {/*    selected*/}
-                {/*    */}
-                {/*    ref={ref => (this.marker = ref)}*/}
-                {/*    title="This is a custom view"*/}
-                {/*    view={this.renderMarker}*/}
-                {/*    coordinate={{ latitude: 39.914884, longitude: 116.403883 }}*/}
-
-                {/*    // onPress={() => console.log("You pressed the marker!")}*/}
-                {/*    // title="This is a marker"*/}
-                {/*    // color="red"*/}
-                {/*    // draggable*/}
-                {/*    // onDrag={() => console.log('----------')}*/}
-                {/*    // onCalloutPress={() => console.log("You pressed the callout!")}*/}
-                {/*    // coordinate={location}*/}
-
-
-                {/*/>*/}
+                <Mapview.Marker
+                    // selected
+                    ref={ref => (this.marker = ref)}
+                    title="This is a custom view"
+                    // view={this.renderMarker}
+                    coordinate={{
+                        latitude: 39.806901,
+                        longitude: 116.397972
+                    }}
+                />
             </Mapview>
         </View>;
     }
