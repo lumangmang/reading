@@ -8,6 +8,7 @@
 #import "RNTPolyline.h"
 
 #import "RNTCoordinate.h"
+#import <BaiduMapAPI_Utils/BMKGeometry.h>
 #import <BaiduMapAPI_Map/BMKPolylineView.h>
 
 @implementation RNTPolyline {
@@ -26,12 +27,12 @@
 }
 
 - (void)setPoints:(NSArray<RNTCoordinate *> *)points {
+  if (!points.count) return;
   CLLocationCoordinate2D coordinates[points.count];
   for (NSUInteger i = 0; i < points.count; i++) {
-      coordinates[i] = points[i].coordinate;
+    coordinates[i] = points[i].coordinate;
   }
   [_polyline setPolylineWithCoordinates:coordinates count:points.count];
-  self.mapView.centerCoordinate = self.mapView.centerCoordinate;
 }
 
 - (void)setWidth:(CGFloat)width {

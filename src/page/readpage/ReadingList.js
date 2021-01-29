@@ -121,27 +121,27 @@ export default class ReadingList extends PureComponent {
         // console.log(location)
         return <View style={{flex: 1}}>
             <Mapview style={{flex: 1}}
-                     // zoom={14}
+                     // zoom={13}
                      // showsUserLocation={true}
                      // userTrackingMode={'follow'}
                      // mapType={'standard'}
                      // locationData={location}
             >
                 <Mapview.Polyline
+                    colors={["rgba(0, 0, 255, 0.5)", "rgba(0, 222, 255, 0.5)"]}
                     points={points}
                     width={5}
-                    color="rgba(0, 0, 255, 0.5)"
                 />
-                <Mapview.Marker
-                    // selected
-                    ref={ref => (this.marker = ref)}
-                    title="This is a custom view"
-                    // view={this.renderMarker}
-                    coordinate={{
-                        latitude: 39.806901,
-                        longitude: 116.397972
-                    }}
-                />
+                {/*<Mapview.Marker*/}
+                {/*    // selected*/}
+                {/*    ref={ref => (this.marker = ref)}*/}
+                {/*    title="This is a custom view"*/}
+                {/*    // view={this.renderMarker}*/}
+                {/*    coordinate={{*/}
+                {/*        latitude: 39.806901,*/}
+                {/*        longitude: 116.397972*/}
+                {/*    }}*/}
+                {/*/>*/}
             </Mapview>
         </View>;
     }
