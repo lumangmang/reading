@@ -43,13 +43,11 @@ export default class Marker extends Component<Props> {
         ...ViewPropTypes,
         ...mapEventsPropType(events),
         coordinate: LatLngPropType.isRequired,
-        color: ColorPropType,
         image: PropTypes.string,
         title: PropTypes.string,
         selected: PropTypes.bool,
         draggable: PropTypes.bool,
         flat: PropTypes.bool,
-        centerOffset: PointPropType,
     }
 
     nativeComponentName = 'MapviewMarker'

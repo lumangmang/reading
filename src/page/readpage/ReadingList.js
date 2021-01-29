@@ -90,58 +90,18 @@ export default class ReadingList extends PureComponent {
         // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
-    componentWillUnmount() {
-        // 移除连续定位
-        // Geolocation.stop()
-        // Geolocation.clearWatch(this.listener)
-
-        // clearInterval(this.timer);
-    }
-
-    renderMarker = () => (
-        <View style={style.marker}>
-            <Image
-                style={style.image}
-                source={{
-                    uri: "https://avatars0.githubusercontent.com/u/1709072?s=100&v=4"
-                }}
-            />
-            <View>
-                <Text style={style.title}>The custom view marker</Text>
-                <Text style={style.time}>{this.state.time.toLocaleString()}</Text>
-            </View>
-        </View>
-    );
-
     render() {
-        // const {
-        //     location,
-        //     center
-        // } = this.state;
-        // console.log(location)
         return <View style={{flex: 1}}>
             <Mapview style={{flex: 1}}
-                     // zoom={13}
-                     // showsUserLocation={true}
-                     // userTrackingMode={'follow'}
-                     // mapType={'standard'}
-                     // locationData={location}
             >
-                <Mapview.Polyline
-                    colors={["rgba(0, 0, 255, 0.5)", "rgba(0, 222, 255, 0.5)"]}
-                    points={points}
-                    width={5}
+                <Mapview.Marker
+                    ref={ref => (this.marker = ref)}
+                    // title="This is a custom view"
+                    coordinate={{
+                        latitude: 39.806901,
+                        longitude: 116.397972
+                    }}
                 />
-                {/*<Mapview.Marker*/}
-                {/*    // selected*/}
-                {/*    ref={ref => (this.marker = ref)}*/}
-                {/*    title="This is a custom view"*/}
-                {/*    // view={this.renderMarker}*/}
-                {/*    coordinate={{*/}
-                {/*        latitude: 39.806901,*/}
-                {/*        longitude: 116.397972*/}
-                {/*    }}*/}
-                {/*/>*/}
             </Mapview>
         </View>;
     }
