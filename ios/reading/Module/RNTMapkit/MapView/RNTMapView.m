@@ -9,6 +9,7 @@
 
 #import "RNTMarker.h"
 #import "RNTOverlay.h"
+#import "RNTHeatMap.h"
 #import "RNTUserLocation.h"
 
 #import <React/UIView+React.h>
@@ -178,19 +179,25 @@ didChangeDragState:(BMKAnnotationViewDragState)newState
       _overlays[[@(overlay.overlay.hash) stringValue]] = overlay;
       [self addOverlay:overlay.overlay];
   }
+  if ([subview isKindOfClass:[RNTHeatMap class]]) {
+    [self addHeatMap:((RNTHeatMap *)subview).heatMap];
+  }
 }
 
 - (void)removeReactSubview:(UIView *)subview {
   [super removeReactSubview:(UIView *) subview];
   if ([subview isKindOfClass:[RNTMarker class]]) {
-      RNTMarker *marker = (RNTMarker *) subview;
-      [_markers removeObjectForKey:[@(marker.annotation.hash) stringValue]];
-      [self removeAnnotation:marker];
+    RNTMarker *marker = (RNTMarker *) subview;
+    [_markers removeObjectForKey:[@(marker.annotation.hash) stringValue]];
+    [self removeAnnotation:marker];
   }
   if ([subview isKindOfClass:[RNTOverlay class]]) {
     RNTOverlay *overlay = (RNTOverlay *)subview;
-      _overlays[[@(overlay.hash) stringValue]] = overlay;
-      [self removeOverlay:overlay.overlay];
+    _overlays[[@(overlay.hash) stringValue]] = overlay;
+    [self removeOverlay:overlay.overlay];
+  }
+  if ([subview isKindOfClass:[RNTHeatMap class]]) {
+      [self removeHeatMap];
   }
 }
 @end

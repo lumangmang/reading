@@ -22,7 +22,15 @@
     return [[RNTUserLocation alloc] initWithCLLocation:cllocation];
 }
 
++ (BMKHeatMapNode *)BMKHeatMapNode:(id)json {
+    BMKHeatMapNode *node = [BMKHeatMapNode new];
+    node.intensity = [json[@"intensity"] doubleValue];
+    node.pt = [self CLLocationCoordinate2D:json];
+    return node;
+}
+
 RCT_ARRAY_CONVERTER(RNTCoordinate)
+RCT_ARRAY_CONVERTER(BMKHeatMapNode)
 
 RCT_ENUM_CONVERTER(BMKUserTrackingMode, (@{
      @"normal": @(BMKUserTrackingModeHeading),

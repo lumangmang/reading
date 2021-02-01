@@ -30,6 +30,16 @@
 		8971AD8B25C2B90600D29E28 /* RNTOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD8A25C2B90600D29E28 /* RNTOverlay.m */; };
 		8971AD9225C2BFA400D29E28 /* RNTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD9125C2BFA400D29E28 /* RNTPolyline.m */; };
 		8971AD9825C2C0E000D29E28 /* RNTPolylineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971AD9725C2C0E000D29E28 /* RNTPolylineManager.m */; };
+		8972BCEE25C79B8900AD4259 /* RNTGradientPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BCED25C79B8900AD4259 /* RNTGradientPolyline.m */; };
+		8972BCF525C79C1B00AD4259 /* RNTGradientPolylineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BCF425C79C1B00AD4259 /* RNTGradientPolylineRenderer.m */; };
+		8972BCFC25C7F1DE00AD4259 /* RNTPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BCFB25C7F1DD00AD4259 /* RNTPolygon.m */; };
+		8972BD0225C7F37600AD4259 /* RNTPolygonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD0125C7F37600AD4259 /* RNTPolygonManager.m */; };
+		8972BD0925C7F8EA00AD4259 /* RNTCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD0825C7F8EA00AD4259 /* RNTCircle.m */; };
+		8972BD0F25C7F9AA00AD4259 /* RNTCircleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD0E25C7F9AA00AD4259 /* RNTCircleManager.m */; };
+		8972BD1625C7FBA900AD4259 /* RNTHeatMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD1525C7FBA900AD4259 /* RNTHeatMap.m */; };
+		8972BD1C25C7FC1800AD4259 /* RNTHeatMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD1B25C7FC1800AD4259 /* RNTHeatMapManager.m */; };
+		8972BD2325C7FEDA00AD4259 /* RNTCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD2225C7FEDA00AD4259 /* RNTCallout.m */; };
+		8972BD2925C7FF0F00AD4259 /* RNTCalloutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8972BD2825C7FF0F00AD4259 /* RNTCalloutManager.m */; };
 		8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD4D25B142CC0003C530 /* RNTTableView.swift */; };
 		8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */; };
 		8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */; };
@@ -119,6 +129,22 @@
 		8971AD9025C2BFA400D29E28 /* RNTPolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTPolyline.h; sourceTree = "<group>"; };
 		8971AD9125C2BFA400D29E28 /* RNTPolyline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPolyline.m; sourceTree = "<group>"; };
 		8971AD9725C2C0E000D29E28 /* RNTPolylineManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPolylineManager.m; sourceTree = "<group>"; };
+		8972BCEC25C79B8900AD4259 /* RNTGradientPolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTGradientPolyline.h; sourceTree = "<group>"; };
+		8972BCED25C79B8900AD4259 /* RNTGradientPolyline.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTGradientPolyline.m; sourceTree = "<group>"; };
+		8972BCF325C79C1B00AD4259 /* RNTGradientPolylineRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTGradientPolylineRenderer.h; sourceTree = "<group>"; };
+		8972BCF425C79C1B00AD4259 /* RNTGradientPolylineRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTGradientPolylineRenderer.m; sourceTree = "<group>"; };
+		8972BCFA25C7F1DD00AD4259 /* RNTPolygon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTPolygon.h; sourceTree = "<group>"; };
+		8972BCFB25C7F1DD00AD4259 /* RNTPolygon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPolygon.m; sourceTree = "<group>"; };
+		8972BD0125C7F37600AD4259 /* RNTPolygonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTPolygonManager.m; sourceTree = "<group>"; };
+		8972BD0725C7F8EA00AD4259 /* RNTCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTCircle.h; sourceTree = "<group>"; };
+		8972BD0825C7F8EA00AD4259 /* RNTCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCircle.m; sourceTree = "<group>"; };
+		8972BD0E25C7F9AA00AD4259 /* RNTCircleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCircleManager.m; sourceTree = "<group>"; };
+		8972BD1425C7FBA900AD4259 /* RNTHeatMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTHeatMap.h; sourceTree = "<group>"; };
+		8972BD1525C7FBA900AD4259 /* RNTHeatMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTHeatMap.m; sourceTree = "<group>"; };
+		8972BD1B25C7FC1800AD4259 /* RNTHeatMapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTHeatMapManager.m; sourceTree = "<group>"; };
+		8972BD2125C7FEDA00AD4259 /* RNTCallout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTCallout.h; sourceTree = "<group>"; };
+		8972BD2225C7FEDA00AD4259 /* RNTCallout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCallout.m; sourceTree = "<group>"; };
+		8972BD2825C7FF0F00AD4259 /* RNTCalloutManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTCalloutManager.m; sourceTree = "<group>"; };
 		8985DD4D25B142CC0003C530 /* RNTTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableView.swift; sourceTree = "<group>"; };
 		8985DD5425B15A7E0003C530 /* RNTTableViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTTableViewBridge.m; sourceTree = "<group>"; };
 		8985DD5A25B15AE00003C530 /* RNTTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNTTableViewManager.swift; sourceTree = "<group>"; };
@@ -388,6 +414,22 @@
 				8971AD9025C2BFA400D29E28 /* RNTPolyline.h */,
 				8971AD9125C2BFA400D29E28 /* RNTPolyline.m */,
 				8971AD9725C2C0E000D29E28 /* RNTPolylineManager.m */,
+				8972BCFA25C7F1DD00AD4259 /* RNTPolygon.h */,
+				8972BCFB25C7F1DD00AD4259 /* RNTPolygon.m */,
+				8972BD0125C7F37600AD4259 /* RNTPolygonManager.m */,
+				8972BCEC25C79B8900AD4259 /* RNTGradientPolyline.h */,
+				8972BCED25C79B8900AD4259 /* RNTGradientPolyline.m */,
+				8972BCF325C79C1B00AD4259 /* RNTGradientPolylineRenderer.h */,
+				8972BCF425C79C1B00AD4259 /* RNTGradientPolylineRenderer.m */,
+				8972BD0725C7F8EA00AD4259 /* RNTCircle.h */,
+				8972BD0825C7F8EA00AD4259 /* RNTCircle.m */,
+				8972BD0E25C7F9AA00AD4259 /* RNTCircleManager.m */,
+				8972BD1425C7FBA900AD4259 /* RNTHeatMap.h */,
+				8972BD1525C7FBA900AD4259 /* RNTHeatMap.m */,
+				8972BD1B25C7FC1800AD4259 /* RNTHeatMapManager.m */,
+				8972BD2125C7FEDA00AD4259 /* RNTCallout.h */,
+				8972BD2225C7FEDA00AD4259 /* RNTCallout.m */,
+				8972BD2825C7FF0F00AD4259 /* RNTCalloutManager.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -868,17 +910,25 @@
 			files = (
 				895BC03A25B5240900E015CC /* RNTPageViewManager.swift in Sources */,
 				8971AD8B25C2B90600D29E28 /* RNTOverlay.m in Sources */,
+				8972BD0F25C7F9AA00AD4259 /* RNTCircleManager.m in Sources */,
 				89AF95CF25BE67000039470C /* RNTMapView.m in Sources */,
 				8985DD5525B15A7E0003C530 /* RNTTableViewBridge.m in Sources */,
+				8972BD1C25C7FC1800AD4259 /* RNTHeatMapManager.m in Sources */,
 				895BC04625B54E8B00E015CC /* RNTLocationManager.m in Sources */,
+				8972BCEE25C79B8900AD4259 /* RNTGradientPolyline.m in Sources */,
 				89B8382825C14A2C00F4E032 /* RNTCoordinate.m in Sources */,
 				89B8385525C171AD00F4E032 /* RCTConvert+Map.m in Sources */,
 				8971AD9225C2BFA400D29E28 /* RNTPolyline.m in Sources */,
 				89AF95D525BE678C0039470C /* RNTMapViewManager.m in Sources */,
 				895BC04025B5242100E015CC /* RNTPageViewBridge.m in Sources */,
 				8971AD7425C2522600D29E28 /* RNTMarkerManager.m in Sources */,
+				8972BD2325C7FEDA00AD4259 /* RNTCallout.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				8972BCF525C79C1B00AD4259 /* RNTGradientPolylineRenderer.m in Sources */,
+				8972BD2925C7FF0F00AD4259 /* RNTCalloutManager.m in Sources */,
+				8972BD0925C7F8EA00AD4259 /* RNTCircle.m in Sources */,
 				89C9206925ABF7FC0074090D /* RNTScrollView.m in Sources */,
+				8972BD0225C7F37600AD4259 /* RNTPolygonManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				895BC03425B523B800E015CC /* RNTPageView.swift in Sources */,
 				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
@@ -887,6 +937,8 @@
 				89C9206F25ABFAE40074090D /* RNTScrollViewManager.m in Sources */,
 				8971AD8425C2AFFF00D29E28 /* RNTUserLocation.m in Sources */,
 				8985DD5B25B15AE00003C530 /* RNTTableViewManager.swift in Sources */,
+				8972BD1625C7FBA900AD4259 /* RNTHeatMap.m in Sources */,
+				8972BCFC25C7F1DE00AD4259 /* RNTPolygon.m in Sources */,
 				89AF95C825BE63780039470C /* RNTInitializerModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

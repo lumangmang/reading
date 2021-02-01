@@ -1,6 +1,6 @@
 /**
  * reading.
- * Create by Devin on 2021/1/28.
+ * Create by Devin on 2021/2/1.
  *
  * Copyright (c) 2021-present, Devin.
  * All rights reserved.
@@ -11,15 +11,12 @@ import { ColorPropType, requireNativeComponent, ViewPropTypes } from 'react-nati
 import PropTypes from 'prop-types'
 import { LatLngPropType } from '../prop-types'
 
-/**
- * 用于定义一段折线
- */
-export default requireNativeComponent('MapPolyline', {
+export default requireNativeComponent('MapPolygon', {
     propTypes: {
         ...ViewPropTypes,
         points: PropTypes.arrayOf(LatLngPropType).isRequired,
-        width: PropTypes.number,
-        color: ColorPropType,
-        colors: PropTypes.arrayOf(ColorPropType),
-    },
+        strokeWidth: PropTypes.number,
+        strokeColor: ColorPropType,
+        fillColor: ColorPropType,
+    }
 })

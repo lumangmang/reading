@@ -6,6 +6,7 @@
 //
 
 #import "RNTMarker.h"
+#import "RNTCallout.h"
 
 #import <React/RCTConvert.h>
 
@@ -14,7 +15,6 @@
   BMKActionPaopaoView *_calloutView;
   UITapGestureRecognizer *_calloutPressHandler;
   BOOL _selected;
-  UIImage *_image;
 }
 
 @synthesize coordinate = _coordinate;
@@ -25,7 +25,6 @@
 }
 - (instancetype)init {
   if (self = [super init]) {
-    _image = [UIImage imageNamed:@"map_replay_startPoint"];
     _annotationView = [[BMKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:nil];
     [_annotationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_onPress:)]];
     _calloutPressHandler = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_onCalloutPress:)];
@@ -38,9 +37,14 @@
 }
 
 - (void)didAddSubview:(UIView *)subview {
-  [_annotationView addSubview:subview];
-  _annotationView.image = nil;
-  _annotationView.bounds = subview.bounds;
+  if ([subview isKindOfClass:[RNTCallout class]]) {
+    _calloutView = [[BMKActionPaopaoView alloc] initWithCustomView:subview];
+    _annotationView.paopaoView = _calloutView;
+  } else {
+    [_annotationView addSubview:subview];
+    _annotationView.image = nil;
+    _annotationView.bounds = subview.bounds;
+  }
 }
 
 - (void)setImage:(NSString *)image {

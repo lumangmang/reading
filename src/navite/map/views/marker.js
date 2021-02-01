@@ -10,14 +10,13 @@
 import React, { ComponentType } from "react"
 import PropTypes from 'prop-types'
 import {
-    ColorPropType,
     requireNativeComponent,
     ViewPropTypes,
     View,
     StyleSheet
 } from 'react-native'
 
-import { LatLngPropType, mapEventsPropType, PointPropType } from "../prop-types"
+import { LatLngPropType, mapEventsPropType } from "../prop-types"
 import Component from "./component";
 
 /**
