@@ -1,13 +1,13 @@
 /**
  * reading.
- * Create by Devin on 2021/1/28.
+ * Create by Devin on 2021/3/5.
  *
  * Copyright (c) 2021-present, Devin.
  * All rights reserved.
  *
  */
 
-import React, { ComponentType } from "react"
+import React, { ComponentType, PureComponent } from "react"
 import PropTypes from 'prop-types'
 import {
     requireNativeComponent,
@@ -16,16 +16,7 @@ import {
     StyleSheet
 } from 'react-native'
 
-import { LatLngPropType, mapEventsPropType } from "../prop-types"
-import Component from "./component";
-
-/**
- * onPress - 点击标注回调
- * onCalloutPress - 点击标注气泡调用
- * onDrag - 拖动annotation view时，若view的状态发生变化，会调用
- * @type {string[]}
- */
-const events = ['onPress', 'onCalloutPress', 'onDrag', 'onDragStart', 'onDragEnd']
+import { LatLngPropType } from "./prop-types"
 
 const style = StyleSheet.create({
     marker: {
@@ -37,28 +28,23 @@ type Props = {
     view?: ComponentType<*>,
 }
 
-export default class Marker extends Component<Props> {
+export default class Marker extends PureComponent<Props> {
     static propTypes = {
         ...ViewPropTypes,
-        ...mapEventsPropType(events),
         coordinate: LatLngPropType.isRequired,
-        image: PropTypes.string,
+        icon: PropTypes.object,
         title: PropTypes.string,
-        selected: PropTypes.bool,
-        draggable: PropTypes.bool,
-        flat: PropTypes.bool,
+        showCallout: PropTypes.bool,
+        onSelect: PropTypes.func,
     }
 
-    nativeComponentName = 'MapviewMarker'
-
-    select() {
-        this.call('select')
+    static defaultProps = {
+        showCallout: false
     }
 
     renderMarkerView() {
         if (this.props.view) {
             const markerView = <this.props.view/>
-
             return (
                 <View style={style.marker} key="marker">{markerView}</View>
             )
@@ -69,11 +55,10 @@ export default class Marker extends Component<Props> {
     render() {
         const props = {
             ...this.props,
-            ...this.handlers(events),
             children: [this.props.children, this.renderMarkerView()],
         }
-        return <BaiduMapMarker {...props}/>
+        return <BaiduMarker onClick={this.props.onSelect}  {...props}/>
     }
 }
 
-const BaiduMapMarker = requireNativeComponent('MapviewMarker', Marker)
+const BaiduMarker = requireNativeComponent('Marker', Marker)

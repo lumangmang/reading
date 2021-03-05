@@ -60,6 +60,7 @@ export default class Mapview extends Component {
     }
 
     nativeComponentName = 'BaiduMapView'
+
     setStatus(status: Status, duration?: number) {
         this.call('setStatus', [status, duration])
     }

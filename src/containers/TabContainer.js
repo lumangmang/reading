@@ -7,9 +7,9 @@
  *
  */
 
-import React, {PureComponent} from "react";
-import {NavigationContainer} from "@react-navigation/native";
-import {BottomTabBar, createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import React, { PureComponent } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { BottomTabBar, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";

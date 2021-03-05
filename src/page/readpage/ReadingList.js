@@ -12,10 +12,11 @@ import {
     View,
     Image,
     StyleSheet,
-    Text
+    Text,
 } from 'react-native';
 
-import { Mapview, Geolocation, LocationManager } from '../../navite/map'
+import { Mapview } from '../../navite/mapKit'
+// import { Mapview, Geolocation, LocationManager } from '../../navite/map'
 const style = StyleSheet.create({
     marker: {
         flexDirection: "row",
@@ -33,34 +34,44 @@ const style = StyleSheet.create({
         fontSize: 16,
         fontWeight: "600"
     },
+
     time: {
         color: "#eee",
         fontSize: 12
     }
 });
 
-const points = [
-    {
-        latitude: 39.806901,
-        longitude: 116.397972
-    },
-    {
-        latitude: 39.806901,
-        longitude: 116.297972
-    },
-    {
-        latitude: 39.906901,
-        longitude: 116.397972
-    }
+const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
+const image = resolveAssetSource(require('../../resource/map_replay_play.png'))
+
+// const coordinates = [
+//     {latitude: 29.695200, longitude: 115.674710, image: image.uri},
+//     {latitude: 29.768930, longitude: 115.627420, image: image.uri},
+//     {latitude: 29.792960, longitude: 115.640100, image: image.uri},
+//     {latitude: 29.323610, longitude: 115.933300, image: image.uri},
+//     {latitude: 29.374330, longitude: 115.973470, image: image.uri},
+// ];
+const coordinates = [
+    {latitude: 29.695200, longitude: 115.674710},
+    {latitude: 29.768930, longitude: 115.627420},
+    {latitude: 29.792960, longitude: 115.640100},
+    {latitude: 29.323610, longitude: 115.933300},
+    {latitude: 29.374330, longitude: 115.973470},
 ];
 
-export default class ReadingList extends PureComponent {
-    // state = {
-    //     location: {},
-    //     center: {latitude: 39.914884, longitude: 116.403883},
-    // }
+const colors = [
+    '#ffba25',
+    '#ff8400',
+    '#3eb6ad',
+    '#02b9f2',
+    '#9176bd',
+]
 
-    // state = { time: new Date() };
+const textureIndex = [
+    1, 2, 2, 3, 1
+]
+
+export default class ReadingList extends PureComponent {
 
     componentDidMount() {
         // 单次定位
@@ -86,80 +97,44 @@ export default class ReadingList extends PureComponent {
         //     console.log(error)
         // })
         // Geolocation.start()
-
         // this.timer = setInterval(() => this.setState({ time: new Date() }), 1000);
     }
 
-    coordinates = new Array(200).fill(0).map(() => ({
-        latitude: 39.5 + Math.random(),
-        longitude: 116 + Math.random(),
-        intensity: Math.random()
-    }));
+    renderMarker = () => (
+        <View style={style.marker}>
+            <Image
+                style={style.image}
+                source={{
+                    uri: "https://avatars0.githubusercontent.com/u/1709072?s=100&v=4"
+                }}
+            />
+            <View>
+                <Text style={style.title}>The custom view marker</Text>
+            </View>
+        </View>
+    );
 
     render() {
 
-        return <View style={{flex: 1}}>
-            <Mapview style={{flex: 1}}
-            >
-                <Mapview.Marker
-                    ref={ref => (this.marker = ref)}
-                    // title="This is a custom view"
-                    coordinate={{
-                        latitude: 39.806901,
-                        longitude: 116.397972
-                    }}
-                    image={'map_replay_startPoint'}
-                />
-                <Mapview.Marker
-                    ref={ref => (this.marker = ref)}
-                    // title="This is a custom view"
-                    coordinate={{
-                        latitude: 39.706901,
-                        longitude: 116.397972
-                    }}
-                    image={'map_replay_startPoint'}
-                />
-                <Mapview.Marker
-                    ref={ref => (this.marker = ref)}
-                    // title="This is a custom view"
-                    coordinate={{
-                        latitude: 39.606901,
-                        longitude: 116.397972
-                    }}
-                    image={'map_replay_startPoint'}
-                />
-                <Mapview.Polyline
-                    points={[
-                        {
-                            latitude: 39.806901,
-                            longitude: 116.397972
-                        },
-                        {
-                            latitude: 39.706901,
-                            longitude: 116.397972
-                        },
-                        {
-                            latitude: 39.606901,
-                            longitude: 116.397972
-                        }
-                    ]}
-                />
-                <Mapview.Polygon
-                    points={points}
-                    strokeWidth={2}
-                    strokeColor="rgba(0, 0, 255, 0.5)"
-                    fillColor="rgba(255, 0, 0, 0.5)"
-                />
-                <Mapview.Circle
-                    center={{ latitude: 39.914884, longitude: 116.403883 }}
-                    radius={10000}
-                    strokeWidth={2}
-                    strokeColor="rgba(0, 0, 255, 0.5)"
-                    fillColor="rgba(255, 0, 0, 0.5)"
-                />
-                <Mapview.HeatMap points={this.coordinates} radius={50} opacity={0.5} />
-            </Mapview>
-        </View>;
+        return (
+            <View style={{flex: 1}}>
+                <Text style={{height: 100}}
+                      onPress={() => {
+                          this.mapView.startAnimation()
+                      }}
+                >
+                    ssss
+                </Text>
+
+                <Mapview style={{flex: 1}}
+                         zoom={12}
+                         mapLine={{colors, coordinates, textureIndex, width: 6}}
+                         ref={mapView => this.mapView = mapView}
+                >
+
+                </Mapview>
+            </View>
+        );
     }
 }
 
