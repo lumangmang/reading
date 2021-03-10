@@ -8,7 +8,6 @@
  */
 
 import React, { ComponentType, PureComponent } from "react"
-import PropTypes from 'prop-types'
 import {
     requireNativeComponent,
     ViewPropTypes,
@@ -16,7 +15,7 @@ import {
     StyleSheet
 } from 'react-native'
 
-import { LatLngPropType } from "./prop-types"
+import { PointPropType } from "./prop-types"
 
 const style = StyleSheet.create({
     marker: {
@@ -28,18 +27,10 @@ type Props = {
     view?: ComponentType<*>,
 }
 
-export default class Marker extends PureComponent<Props> {
+export default class YKMapMarker extends PureComponent<Props> {
     static propTypes = {
         ...ViewPropTypes,
-        coordinate: LatLngPropType.isRequired,
-        icon: PropTypes.object,
-        title: PropTypes.string,
-        showCallout: PropTypes.bool,
-        onSelect: PropTypes.func,
-    }
-
-    static defaultProps = {
-        showCallout: false
+        coordinate: PointPropType.isRequired,
     }
 
     renderMarkerView() {
@@ -57,8 +48,8 @@ export default class Marker extends PureComponent<Props> {
             ...this.props,
             children: [this.props.children, this.renderMarkerView()],
         }
-        return <BaiduMarker onClick={this.props.onSelect}  {...props}/>
+        return <YKMarkerView {...props}/>
     }
 }
 
-const BaiduMarker = requireNativeComponent('Marker', Marker)
+const YKMarkerView = requireNativeComponent('Marker', YKMapMarker)

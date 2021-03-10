@@ -23,4 +23,5 @@ export const LatLngPropType = PropTypes.shape({
 export const PointPropType = PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
+    id: PropTypes.number,
 })

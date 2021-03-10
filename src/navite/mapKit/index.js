@@ -8,15 +8,11 @@
  */
 
 
-import Mapview from "./map-view";
-import Marker from "./map-marker";
+import YKMapView from "./yk-map-view";
+import YKMapMarker from "./yk-map-marker";
 
-Mapview.Marker = Marker
+YKMapView.Marker = YKMapMarker
 
-export default {
-    Mapview,
-}
+export default YKMapView
 
-export {
-    Mapview,
-}
+

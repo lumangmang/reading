@@ -18,10 +18,6 @@
 
 RCT_EXPORT_MODULE(Marker)
 
-RCT_EXPORT_VIEW_PROPERTY(onClick, RCTBubblingEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(icon, id)
-RCT_EXPORT_VIEW_PROPERTY(title, NSString)
-RCT_EXPORT_VIEW_PROPERTY(showCallout, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(coordinate, CLLocationCoordinate2D)
 
 @end

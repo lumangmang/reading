@@ -7,8 +7,6 @@
 
 #import "RCTMarker.h"
 
-#import <React/RCTConvert.h>
-
 @implementation RCTMarker {
   BMKAnnotationView *_annotationView;
 }
@@ -30,9 +28,8 @@
   _annotationView.bounds = subview.bounds;
 }
 
-- (void)setIcon:(id)icon {
-  UIImage *image = [RCTConvert UIImage:icon];
-  _annotationView.image = image;
+- (void)setImage:(NSString *)imageName {
+  _annotationView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
 }
 
 - (void)setShowCallout:(BOOL)showCallout {

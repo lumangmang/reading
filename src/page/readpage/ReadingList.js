@@ -15,8 +15,8 @@ import {
     Text,
 } from 'react-native';
 
-import { Mapview } from '../../navite/mapKit'
-// import { Mapview, Geolocation, LocationManager } from '../../navite/map'
+import YKMapView from '../../navite/mapKit'
+// import { YkMapView, Geolocation, LocationManager } from '../../navite/map'
 const style = StyleSheet.create({
     marker: {
         flexDirection: "row",
@@ -25,8 +25,8 @@ const style = StyleSheet.create({
         padding: 8
     },
     image: {
-        width: 42,
-        height: 42,
+        width: 20,
+        height: 20,
         marginRight: 8
     },
     title: {
@@ -67,9 +67,13 @@ const colors = [
     '#9176bd',
 ]
 
-const textureIndex = [
-    1, 2, 2, 3, 1
+const speedColors = []
+
+const speeds = [
+    0, 60, 30, 80, 120,
 ]
+
+const textureIndex = []
 
 export default class ReadingList extends PureComponent {
 
@@ -108,31 +112,49 @@ export default class ReadingList extends PureComponent {
                     uri: "https://avatars0.githubusercontent.com/u/1709072?s=100&v=4"
                 }}
             />
-            <View>
-                <Text style={style.title}>The custom view marker</Text>
-            </View>
+            {/*<View>*/}
+            {/*    <Text style={style.title}>The custom view marker</Text>*/}
+            {/*</View>*/}
         </View>
     );
 
     render() {
+        speeds.map(((value, index) => {
+            if (0 <= value && value < 30) {
+                speedColors.push(colors[0])
+            } else if (30 <= value && value < 60) {
+                speedColors.push(colors[1])
+            } else if (60 <= value && value < 80) {
+                speedColors.push(colors[2])
+            } else if (80 <= value && value < 100) {
+                speedColors.push(colors[3])
+            } else {
+                speedColors.push(colors[4])
+            }
+            textureIndex.push(index)
+        }))
 
         return (
             <View style={{flex: 1}}>
                 <Text style={{height: 100}}
                       onPress={() => {
-                          this.mapView.startAnimation()
+                          // this.mapView.zoom(18)
                       }}
                 >
                     ssss
                 </Text>
 
-                <Mapview style={{flex: 1}}
-                         zoom={12}
-                         mapLine={{colors, coordinates, textureIndex, width: 6}}
-                         ref={mapView => this.mapView = mapView}
+                <YKMapView style={{flex: 1}}
+                           zoom={12}
+                           // mapLine={{colors: speedColors, coordinates, textureIndex, width: 6}}
+                           points={[coordinates[0]]}
+                           ref={mapView => this.mapView = mapView}
                 >
-
-                </Mapview>
+                        <YKMapView.Marker
+                            coordinate={coordinates[0]}
+                            view={this.renderMarker}
+                        />
+                </YKMapView>
             </View>
         );
     }

@@ -17,9 +17,9 @@ import {
     ColorPropType,
 } from 'react-native'
 
-import { LatLngPropType, PointPropType } from './prop-types'
+import { LatLngPropType } from './prop-types'
 
-export default class Mapview extends PureComponent {
+export default class YKMapView extends PureComponent {
 
     static propTypes = {
         ...ViewPropTypes,
@@ -39,7 +39,7 @@ export default class Mapview extends PureComponent {
         // 所有点适配中心
         points: PropTypes.arrayOf(LatLngPropType),
         // 一组地图标记物
-        markers: PropTypes.arrayOf(PointPropType),
+        markers: PropTypes.arrayOf(PropTypes.object),
         // 地图轨迹
         mapLine: PropTypes.shape({
             // 颜色数组,必须为16进制颜色 #eeeeee
@@ -51,6 +51,7 @@ export default class Mapview extends PureComponent {
             // 线宽
             width: PropTypes.number,
         }),
+        onMarkerClick: PropTypes.func,
     }
 
     static defaultProps = {
@@ -60,38 +61,17 @@ export default class Mapview extends PureComponent {
     }
 
     /**
-     * 开始轨迹动画
-     */
-    startAnimation() {
-        this.nativeMethod('startAnimation')
-    }
-
-    /**
-     * 停止轨迹动画
-     */
-    stopAnimation() {
-        this.nativeMethod('stopAnimation')
-    }
-
-    /**
-     * 暂停轨迹动画
-     */
-    pauseAnimation() {
-        this.nativeMethod('pauseAnimation')
-    }
-
-    /**
      * 缩小一级地图
      */
     zoomOut() {
-        this.nativeMethod('zoomOut')
+        this.call('zoomOut')
     }
 
     /**
      * 放大一级地图
      */
     zoomIn() {
-        this.nativeMethod('zoomIn')
+        this.call('zoomIn')
     }
 
     /**
@@ -99,17 +79,17 @@ export default class Mapview extends PureComponent {
      * @param command 原生方法名
      * @param params 传递给原生的参数
      */
-    nativeMethod(command: string, params?: any[]) {
+    call(command: string, params?: any[]) {
         UIManager.dispatchViewManagerCommand(
             findNodeHandle(this),
-            UIManager.getViewManagerConfig('RCTMapView').Commands[command],
+            UIManager.getViewManagerConfig('YKMapView').Commands[command],
             params,
         )
     }
 
     render() {
-        return <NativeMapView {...this.props}/>
+        return <YKMap {...this.props}/>
     }
 }
 
-const NativeMapView = requireNativeComponent('RCTMapView', Mapview)
+const YKMap = requireNativeComponent('YKMapView', YKMapView)

@@ -9,10 +9,8 @@
 #import "UIColor+Ex.h"
 #import "RCTMapView.h"
 #import "RCTPolyline.h"
-#import "RCTSportNode.h"
 #import "RCTCoordinate.h"
 #import "RCTMapView+Fit.h"
-#import "RCTSportAnnotationView.h"
 
 #import <React/RCTConvert.h>
 #import <React/UIView+React.h>
@@ -21,9 +19,6 @@
   
   NSMutableDictionary *_overlays;
   NSMutableDictionary *_markers;
-  
-  BMKPointAnnotation *_annotation;
-  RCTSportAnnotationView *_sportAnnotationView;
 }
 
 - (instancetype)init {
@@ -57,9 +52,12 @@
   self.scrollEnabled = scrollGesturesEnabled;
 }
 
+/// 所有点适配在合适
+/// @param points 点集合
 - (void)setPoints:(NSArray <RCTCoordinate *> *)points {
   [self mapViewFitPoints:points animated:YES];
 }
+
 /// 设定地图轨迹
 /// @param mapLine 轨迹点集合
 - (void)setMapLine:(id)mapLine {
@@ -88,32 +86,7 @@
 }
 
 - (void)mapView:(BMKMapView *)mapView clickAnnotationView:(BMKAnnotationView *)view {
-  RCTMarker *marker = [self getMarker:view.annotation];
-  if (marker.onClick) {
-    marker.onClick(@{
-      @"title": @"ssss"
-                           });
-  }
 }
-
-// MARK: - Export Method
-- (void)startAnimation {
-  if (!_annotation) {
-    _annotation = [[BMKPointAnnotation alloc] init];
-  }
-  _annotation.title = @"轨迹回放";
-  [self addAnnotation:_annotation];
-  [_sportAnnotationView startAnimation];
-}
-
-- (void)stopAnimation {
-  [_sportAnnotationView stopAnimation];
-}
-
-- (void)pauseAnimation {
-  [_sportAnnotationView pauseAnimation];
-}
-
 // MARK: - Private Method
 /// 获取覆盖物
 - (RCTOverlay *)getOverlay:(id <BMKOverlay>)overlay {
@@ -139,21 +112,5 @@
     [self addAnnotation:marker];
   }
 }
-
-- (void)removeReactSubview:(UIView *)subview {
-  [super removeReactSubview:subview];
-  if ([subview isKindOfClass:[RCTMarker class]]) {
-    RCTMarker *marker = (RCTMarker *) subview;
-    [_markers removeObjectForKey:[@(marker.annotation.hash) stringValue]];
-    [self removeAnnotation:marker];
-  }
-  
-  if ([subview isKindOfClass:[RCTOverlay class]]) {
-    RCTOverlay *overlay = (RCTOverlay *)subview;
-    [_overlays removeObjectForKey:[@(overlay.hash) stringValue]];
-    [self removeOverlay:overlay.overlay];
-  }
-}
-
 @end
 
