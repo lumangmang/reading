@@ -14,7 +14,6 @@
 #import "RCTMapView+Fit.h"
 
 #import <React/RCTConvert.h>
-#import <React/UIView+React.h>
 
 @implementation RCTMapView {
   
