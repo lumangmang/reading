@@ -18,6 +18,6 @@
 
 RCT_EXPORT_MODULE(Marker)
 
-RCT_EXPORT_VIEW_PROPERTY(coordinate, CLLocationCoordinate2D)
+RCT_EXPORT_VIEW_PROPERTY(point, NSDictionary)
 
 @end

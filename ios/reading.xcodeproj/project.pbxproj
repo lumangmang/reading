@@ -68,6 +68,7 @@
 		89E3DD8125C4111000846BC7 /* map_replay_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3DD7925C4110F00846BC7 /* map_replay_play@2x.png */; };
 		89E3DD8225C4111000846BC7 /* map_replay_endPoint@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3DD7A25C4110F00846BC7 /* map_replay_endPoint@3x.png */; };
 		89E3DD8325C4111000846BC7 /* map_replay_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89E3DD7B25C4110F00846BC7 /* map_replay_play@3x.png */; };
+		89F5B54F25F8BA0A001EB3E3 /* RCTCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F5B54E25F8BA0A001EB3E3 /* RCTCircle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,8 @@
 		89E3DD7925C4110F00846BC7 /* map_replay_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_replay_play@2x.png"; sourceTree = "<group>"; };
 		89E3DD7A25C4110F00846BC7 /* map_replay_endPoint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_replay_endPoint@3x.png"; sourceTree = "<group>"; };
 		89E3DD7B25C4110F00846BC7 /* map_replay_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_replay_play@3x.png"; sourceTree = "<group>"; };
+		89F5B54D25F8BA0A001EB3E3 /* RCTCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCircle.h; sourceTree = "<group>"; };
+		89F5B54E25F8BA0A001EB3E3 /* RCTCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCircle.m; sourceTree = "<group>"; };
 		AC05ACFE81BDB79450C07C15 /* Pods-reading-readingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading-readingTests.debug.xcconfig"; path = "Target Support Files/Pods-reading-readingTests/Pods-reading-readingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0941DD68A0777F7FE035F30 /* Pods-reading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reading.debug.xcconfig"; path = "Target Support Files/Pods-reading/Pods-reading.debug.xcconfig"; sourceTree = "<group>"; };
 		B77FAB5EA367BF0AB003D42E /* libPods-reading-readingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reading-readingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +381,8 @@
 				8979302425EF37A2002A5F79 /* RCTOverlay.m */,
 				8979302A25EF381A002A5F79 /* RCTPolyline.h */,
 				8979302B25EF381A002A5F79 /* RCTPolyline.m */,
+				89F5B54D25F8BA0A001EB3E3 /* RCTCircle.h */,
+				89F5B54E25F8BA0A001EB3E3 /* RCTCircle.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 				8957F85425F0E71E00951157 /* UIColor+Ex.m in Sources */,
 				89CD212D25E7774E00DCC9C0 /* RCTMapView+Fit.m in Sources */,
 				895BC03425B523B800E015CC /* RNTPageView.swift in Sources */,
+				89F5B54F25F8BA0A001EB3E3 /* RCTCircle.m in Sources */,
 				8985DD4E25B142CC0003C530 /* RNTTableView.swift in Sources */,
 				8971AD9825C2C0E000D29E28 /* RNTPolylineManager.m in Sources */,
 				8971AD6E25C2520400D29E28 /* RNTMarker.m in Sources */,

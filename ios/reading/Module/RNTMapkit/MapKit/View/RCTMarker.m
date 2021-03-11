@@ -7,10 +7,11 @@
 
 #import "RCTMarker.h"
 
+#import <React/RCTConvert+CoreLocation.h>
+
 @implementation RCTMarker {
   BMKAnnotationView *_annotationView;
 }
-@synthesize coordinate = _coordinate;
 
 - (BMKAnnotationView *)annotationView {
   return _annotationView;
@@ -19,20 +20,23 @@
 - (instancetype)init {
   if (self = [super init]) {
     _annotationView = [[BMKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:nil];
+    _annotationView.frame = CGRectMake(0, 0, 45, 60);
   }
   return self;
 }
 
+- (void)setPoint:(NSDictionary *)point {
+  _coordinate = [RCTConvert CLLocationCoordinate2D:point];
+  self.markerId = [point[@"id"] intValue];
+}
+
 - (void)didAddSubview:(UIView *)subview {
   [_annotationView addSubview:subview];
-  _annotationView.bounds = subview.bounds;
 }
 
-- (void)setImage:(NSString *)imageName {
-  _annotationView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]]];
+- (void)setImageURLString:(NSString *)imageURLString {
+  _annotationView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLString]]];
 }
+@synthesize coordinate = _coordinate;
 
-- (void)setShowCallout:(BOOL)showCallout {
-  _annotationView.canShowCallout = showCallout;
-}
 @end

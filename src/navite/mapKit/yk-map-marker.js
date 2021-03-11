@@ -27,10 +27,13 @@ type Props = {
     view?: ComponentType<*>,
 }
 
+/**
+ * 地图标记物类(自定义标记物)
+ */
 export default class YKMapMarker extends PureComponent<Props> {
     static propTypes = {
         ...ViewPropTypes,
-        coordinate: PointPropType.isRequired,
+        point: PointPropType.isRequired,
     }
 
     renderMarkerView() {

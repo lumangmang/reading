@@ -18,7 +18,7 @@ export const LatLngPropType = PropTypes.shape({
 /**
  * 地图点标记
  * latitude longitude 经纬度必传
- * title 标题 subTitle 副标题
+ * id 点的标识,做点击使用
  */
 export const PointPropType = PropTypes.shape({
     latitude: PropTypes.number.isRequired,

@@ -18,8 +18,6 @@
   if (self = [super init]) {
     _polyline = [BMKPolyline new];
     _polylineView = [[BMKPolylineView alloc] initWithPolyline:_polyline];
-    _polylineView.lineWidth = 3;
-    _polylineView.strokeColor = UIColor.redColor;
   }
   return self;
 }
@@ -55,12 +53,6 @@
 }
 
 - (BMKOverlayView *)overlayView {
-    if (!_polylineView) {
-        _polyline = [BMKPolyline new];
-        _polylineView = [[BMKPolylineView alloc] initWithPolyline:_polyline];
-        _polylineView.strokeColor = UIColor.redColor;
-        _polylineView.lineWidth = 3;
-    }
     return _polylineView;
 }
 @end

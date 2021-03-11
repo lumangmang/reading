@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import YKMapView from '../../navite/mapKit'
-// import { YkMapView, Geolocation, LocationManager } from '../../navite/map'
+// import { Mapview, Geolocation, LocationManager } from '../../navite/map'
 const style = StyleSheet.create({
     marker: {
         flexDirection: "row",
@@ -44,20 +44,20 @@ const style = StyleSheet.create({
 const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
 const image = resolveAssetSource(require('../../resource/map_replay_play.png'))
 
-// const coordinates = [
-//     {latitude: 29.695200, longitude: 115.674710, image: image.uri},
-//     {latitude: 29.768930, longitude: 115.627420, image: image.uri},
-//     {latitude: 29.792960, longitude: 115.640100, image: image.uri},
-//     {latitude: 29.323610, longitude: 115.933300, image: image.uri},
-//     {latitude: 29.374330, longitude: 115.973470, image: image.uri},
-// ];
 const coordinates = [
-    {latitude: 29.695200, longitude: 115.674710},
-    {latitude: 29.768930, longitude: 115.627420},
-    {latitude: 29.792960, longitude: 115.640100},
-    {latitude: 29.323610, longitude: 115.933300},
-    {latitude: 29.374330, longitude: 115.973470},
+    {latitude: 29.695200, longitude: 115.674710, image: image.uri, id: 3},
+    {latitude: 29.768930, longitude: 115.627420, image: image.uri, id: 4},
+    {latitude: 29.792960, longitude: 115.640100, image: image.uri, id: 1},
+    {latitude: 29.323610, longitude: 115.933300, image: image.uri, id: 5},
+    {latitude: 29.374330, longitude: 115.973470, image: image.uri, id: 2},
 ];
+// const coordinates = [
+//     {latitude: 29.695200, longitude: 115.674710},
+//     {latitude: 29.768930, longitude: 115.627420},
+//     {latitude: 29.792960, longitude: 115.640100},
+//     {latitude: 29.323610, longitude: 115.933300},
+//     {latitude: 29.374330, longitude: 115.973470},
+// ];
 
 const colors = [
     '#ffba25',
@@ -105,16 +105,13 @@ export default class ReadingList extends PureComponent {
     }
 
     renderMarker = () => (
-        <View style={style.marker}>
+        <View  style={style.marker}>
             <Image
                 style={style.image}
                 source={{
                     uri: "https://avatars0.githubusercontent.com/u/1709072?s=100&v=4"
                 }}
             />
-            {/*<View>*/}
-            {/*    <Text style={style.title}>The custom view marker</Text>*/}
-            {/*</View>*/}
         </View>
     );
 
@@ -138,22 +135,53 @@ export default class ReadingList extends PureComponent {
             <View style={{flex: 1}}>
                 <Text style={{height: 100}}
                       onPress={() => {
-                          // this.mapView.zoom(18)
+                          // 设定地图缩放比例
+                          this.mapView.zoom(18)
+                          // 地图放大一级
+                          // this.mapView.zoomIn()
+                          // 地图缩小一级
+                          // this.mapView.zoomOut()
                       }}
                 >
                     ssss
                 </Text>
 
                 <YKMapView style={{flex: 1}}
+                           // 缩放比例
                            zoom={12}
-                           // mapLine={{colors: speedColors, coordinates, textureIndex, width: 6}}
-                           points={[coordinates[0]]}
+                           // 画圆
+                           drawCircle={{
+                               latitude: 29.792960,
+                               longitude: 115.640100,
+                               radius: 10000,
+                               color: '#ff8400',
+                               strokeWidth: 2.0,
+                               strokeColor: '#9176bd'
+                           }}
+                           // 点标记点击事件 id回调点标记的唯一标识
+                           onMarkerClick={(id) => {
+                               console.log(id)
+                           }}
+                           // 画轨迹
+                           mapLine={{colors: speedColors, coordinates, textureIndex, width: 6}}
+                           // 系统点标记
+                           markers={coordinates}
+                           // 所有点适配
+                           points={coordinates}
                            ref={mapView => this.mapView = mapView}
                 >
-                        <YKMapView.Marker
-                            coordinate={coordinates[0]}
-                            view={this.renderMarker}
-                        />
+                    {coordinates.map((item, index) => {
+                        return (
+                            <YKMapView.Marker
+                                // 自定义点标记
+                                // point - 点的经纬度坐标
+                                point={item}
+                                // 自定义视图
+                                view={this.renderMarker}
+                                key={index}
+                            />
+                        )
+                    })}
                 </YKMapView>
             </View>
         );

@@ -38,7 +38,7 @@ export default class YKMapView extends PureComponent {
         zoomGesturesEnabled: PropTypes.bool,
         // 所有点适配中心
         points: PropTypes.arrayOf(LatLngPropType),
-        // 一组地图标记物
+        // 一组地图标记物(地图原生标记)
         markers: PropTypes.arrayOf(PropTypes.object),
         // 地图轨迹
         mapLine: PropTypes.shape({
@@ -51,7 +51,10 @@ export default class YKMapView extends PureComponent {
             // 线宽
             width: PropTypes.number,
         }),
+        // 地图标记点点击事件
         onMarkerClick: PropTypes.func,
+        // 画圆
+        drawCircle: PropTypes.object,
     }
 
     static defaultProps = {
@@ -74,6 +77,10 @@ export default class YKMapView extends PureComponent {
         this.call('zoomIn')
     }
 
+    zoom(zoomNum) {
+        this.call('zoom', [zoomNum])
+    }
+
     /**
      * 私有方法
      * @param command 原生方法名
@@ -88,7 +95,9 @@ export default class YKMapView extends PureComponent {
     }
 
     render() {
-        return <YKMap {...this.props}/>
+        return <YKMap {...this.props} onClick={obj => {
+            this.props.onMarkerClick(obj.nativeEvent.id);
+        }}/>
     }
 }
 

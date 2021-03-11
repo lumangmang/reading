@@ -5,6 +5,7 @@
 //  Created by Devin on 2021/2/6.
 //
 
+#import "RCTCircle.h"
 #import "RCTMarker.h"
 #import "UIColor+Ex.h"
 #import "RCTMapView.h"
@@ -58,9 +59,24 @@
   [self mapViewFitPoints:points animated:YES];
 }
 
+/// 原生点标记
+/// @param markers 标记点集合
+- (void)setMarkers:(NSArray <NSDictionary *> *)markers {
+  NSMutableArray<RCTMarker *> *annotations = [NSMutableArray array];
+  [markers enumerateObjectsUsingBlock:^(NSDictionary *object, NSUInteger idx, BOOL *stop) {
+    RCTMarker *marker = [[RCTMarker alloc] init];
+    marker.coordinate = [RCTConvert CLLocationCoordinate2D:object];
+    marker.imageURLString = object[@"image"];
+    marker.markerId = [object[@"id"] intValue];
+    _markers[[@(marker.hash) stringValue]] = marker;
+    [annotations addObject:marker];
+  }];
+  [self addAnnotations:annotations];
+}
+
 /// 设定地图轨迹
 /// @param mapLine 轨迹点集合
-- (void)setMapLine:(id)mapLine {
+- (void)setMapLine:(NSDictionary *)mapLine {
   RCTPolyline *polyine = [[RCTPolyline alloc] init];
   polyine.points = mapLine[@"coordinates"];
   polyine.textureIndex = mapLine[@"textureIndex"];
@@ -71,13 +87,21 @@
   [self mapViewFitPolyline:polyine.overlay];
 }
 
+/// 根据中心点和半径生成圆
+- (void)setDrawCircle:(NSDictionary *)circle {
+  RCTCircle *_circle = [[RCTCircle alloc] init];
+  _circle.circleCenter = [RCTConvert CLLocationCoordinate2D:circle];
+  _circle.radius = [circle[@"radius"] doubleValue];
+  _circle.strokeWidth = [circle[@"strokeWidth"] floatValue];
+  _circle.strokeColor = [UIColor HexColor:circle[@"strokeColor"]];
+  _circle.fillColor = [UIColor HexColor:circle[@"color"]];
+  [self addSubOverlay:_circle];
+}
+
 // MARK: - BMKMapViewDelegate
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id<BMKAnnotation>)annotation {
-  if ([annotation isKindOfClass:[RCTMarker class]]) {
-    RCTMarker *marker = (RCTMarker *)annotation;
-    return marker.annotationView;
-  }
-  return nil;
+  RCTMarker *marker = [self getMarker:annotation];
+  return marker.annotationView;
 }
 
 - (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id<BMKOverlay>)overlay {
@@ -86,7 +110,10 @@
 }
 
 - (void)mapView:(BMKMapView *)mapView clickAnnotationView:(BMKAnnotationView *)view {
+  RCTMarker *marker = [self getMarker:view.annotation];
+  if (self.onClick) { self.onClick(@{@"id": @(marker.markerId)}); }
 }
+
 // MARK: - Private Method
 /// 获取覆盖物
 - (RCTOverlay *)getOverlay:(id <BMKOverlay>)overlay {
@@ -112,5 +139,6 @@
     [self addAnnotation:marker];
   }
 }
+
 @end
 

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RCTMapView : BMKMapView <BMKMapViewDelegate>
 
+@property (nonatomic, copy) RCTBubblingEventBlock onClick;
+
 @end
 
 NS_ASSUME_NONNULL_END
